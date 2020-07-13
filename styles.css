@@ -33,31 +33,12 @@ header
      background-size: cover;
 }
 
-.banner
-{
-    height: 4em;
-    /* background-color: slategray; */
-}
-/* h2
-{
-    font-size: 40px;
-    width: 70%;
-    height: 2em;
-    margin-left: 10px;
-    min-width: 2em;
-    background-color: royalblue;
-}  */
 
-
-
-.main p
-{
-	padding: 10px;
-}
 #down
 {
 	position: absolute;
-	top:85vh;
+  top:85vh;
+  border-radius: 20px;
 	size: 40px;
 	padding: 20px;
 	font-size: 2.5em;
@@ -74,129 +55,12 @@ h1
     font-size: 60px;
     font-family: 'Ewert', cursive;
 }
-.slide-containter
-{
-    width: 800px; /*Width of the Images*/
-    /* height: 600px;*/
-    margin-right: auto;
-    margin-left: auto;
-    overflow: hidden;
-    text-align: center;
-}
-.image-container
-{
-    width: 2400px;/*width of images times number of images*/
-    height: 600px; /*must be same height of .slide-container*/
-    position: relative;
-    transition: left 2s;
-    -webkit-transition: left 2s;
-    -moz-transition: left 2s;
-    -o-transition: left 2s;
-    ;
-}
-.slider-image 
-{
-    float: left;
-    margin: 0px;
-    padding: 0px;
-}
-.button-container
-{
-    top:-20px;
-    position:relative;
 
-}
-.slider-button
-{
-   border-radius: 5px;
-   background-color: antiquewhite; 
-   width: 10px;
-   height: 10px;
-   display: inline-block;
-
-}
-#slider-image-1:target~ .image-container 
-{
-    left: 0px;
-}
-#slider-image-2:target~ .image-container 
-{
-    left: -800px;
-}
-#slider-image-3:target~ .image-container 
-{
-    left: -1600px;
-}
-
-.topnav {
-    height: 4REM;
-    overflow: hidden;
-    background-color: rgb(94, 31, 31);
-  }
-  
-  .topnav a {
-    float: left;
-    height: 100%;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .active {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .topnav .icon {
-    display: none;
-  }
-  
-  
-  
-  
-  .topnav a:hover {
-    background-color: #555;
-    color: white;
-  }
-  
-  @media screen and (max-width: 600px) {
-      /* .topnav a {
-        width: 20%;
-      } */
-      
-    .topnav a:not(:first-child) {
-      display: none;
-      background-color: plum;
-    }
+  @media screen and (max-width: 600px) 
+  {
+     
+     
     
-  .topnav.responsive {
-      position: relative;
-        display: inline;
-    }
-    .topnav.responsive .icon {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .topnav.responsive a {
-      float: none;
-      display: block;
-      /* background-color: pink; */
-      /* overflow-y: visible; */
-      /* z-index: 0; */
-      text-align: left;
-      
-    }
-    .topnav a.icon {
-        float: right;
-        /* background-color: chocolate; */
-        display: block;
-        z-index: 0;
-        width:1rem;
-      }
   }
   @media only screen and (max-device-width: 1366px) {
     header {

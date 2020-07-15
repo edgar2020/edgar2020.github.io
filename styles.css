@@ -6,7 +6,8 @@
 
 html
 {
-    background-color: yellowgreen;
+    background-color: #9a98b5;
+    overflow-x: hidden;
 }
 *
 {
@@ -18,26 +19,79 @@ font-family: monospace;
 header
 {
 
-	height: 100vh;
-	background-image: url('photos/header_website.png');
+	height: 93vh;
+	background-image: url('photos/header_website\(v001\).png');
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	background-size: cover;
 	justify-content: center;
-    margin-bottom: 30px;
-    background-color: pink;
-    background-attachment: fixed;
-     background-position: center;
-     background-repeat: no-repeat;
-     background-size: cover;
+  margin-bottom: 30px;
+  background-color: pink;
+  background-attachment: fixed;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#logo
+{
+  padding:7px;
+  width: 45px;
+}
+nav
+{
+  border-top: 5px solid #5c2368;
+  border-bottom: 3px solid #5c2368;
+  /* margin-top: -140px; */
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  margin-top: -40px;
+  display: inline-block;
+  background-color: #802392;
+  width: 100%;
+}
+
+.button-container
+{
+  right: 0px;
+  /* margin-top: 2vh; */
+  float: right;
+  top: 0px;
+  /* background-color: blue; */
+}
+nav .button {
+  border: none;
+  /* text-decoration: wavy; */
+  font-weight: bold;
+  
+  width: 150px;
+  color: #a0b9c6;
+  padding: 20px 0px;
+  text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  display: inline-block;
+  font-size: 20px;
+  border-left: 1px solid #5c2368;
+  /* transition: all 2s; */
+  cursor: pointer;
+  
+  
+}
+nav .button:hover {
+  /* transition-property: ; */
+  transition-duration: 0.5s;
+  background-color: #9831af;
+  text-decoration: underline;
+  /* animation-delay:  2s; */
 }
 
 
 #down
 {
 	position: absolute;
-  top:85vh;
+  top:80vh;
   border-radius: 20px;
 	size: 40px;
 	padding: 20px;
@@ -52,10 +106,15 @@ header
 }
 h1
 {
+  color: #a5f8d3;
+  text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
     font-size: 60px;
-    font-family: 'Ewert', cursive;
+    font-family: 'Bungee Shade', cursive;
 }
-
   @media screen and (max-width: 600px) 
   {
      

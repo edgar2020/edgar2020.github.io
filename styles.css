@@ -2,7 +2,7 @@
 /* font-family: 'Bungee Shade', cursive; */
 /* font-family: 'Ewert', cursive; */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro'); */
 
 html
 {
@@ -19,7 +19,7 @@ font-family: monospace;
 header
 {
 
-	height: 93vh;
+	height: 91vh;
 	background-image: url('photos/header_website\(v001\).png');
 	display: flex;
 	flex-direction: column;
@@ -50,6 +50,7 @@ nav
   display: inline-block;
   background-color: #802392;
   width: 100%;
+   z-index: 1;
 }
 
 .button-container
@@ -84,6 +85,7 @@ nav .button:hover {
   transition-duration: 0.5s;
   background-color: #9831af;
   text-decoration: underline;
+ 
   /* animation-delay:  2s; */
 }
 
@@ -91,7 +93,7 @@ nav .button:hover {
 #down
 {
 	position: absolute;
-  top:80vh;
+  top:75vh;
   border-radius: 20px;
 	size: 40px;
 	padding: 20px;
@@ -106,6 +108,7 @@ nav .button:hover {
 }
 h1
 {
+  margin: 10px 0px 0px 20px;
   color: #a5f8d3;
   text-shadow:
    -1px -1px 0 #000,  
@@ -115,6 +118,82 @@ h1
     font-size: 60px;
     font-family: 'Bungee Shade', cursive;
 }
+.AboutMe_Image {
+  display: block;
+  width: 20vw;
+  height: auto;
+  filter: grayscale(100%);
+}
+
+/* .img_Overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+} */
+.polaroid {
+  margin-left: 35px;
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+  float: left;
+  /* position: relative; */
+  width: 20vw;
+  border: 1px solid rgb(46, 46, 46);
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 35px;
+}
+#invisa-Text
+{
+  /* color: white; */
+  position: relative;
+  left:-2430px;
+}
+.Polaroid_Container {
+  text-align: center;
+  padding: 20px 20px;
+}
+/* .AboutMe_Container:hover .img_Overlay {
+  opacity: 1;
+} */
+
+#AboutMe_Text {
+  color: black;
+  /* font-family: 'Source Code Pro', monospace; */
+  font-size: 20px;
+  margin-left: -8px;
+ 
+}
+.AboutSection
+{
+  width: 100vw;
+  /* background-color: darkorange; */
+  display: inline-flex;
+  /* display: inline-block; */
+  /* width: 70vw;
+  float: right; */
+}
+.AboutParagraph
+{
+  font-size: 20px;
+
+  position: absolute;
+  right: 0px;
+  width: 68vw;
+  /* height: 100%; */
+  /* background-color: darkgreen; */
+  float: right;
+  margin-right:20px;
+  /* margin-right: 15px; */
+}
+
   @media screen and (max-width: 600px) 
   {
      

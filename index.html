@@ -1,92 +1,105 @@
 <!DOCTYPE html>
 <html>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript">
-        window.onbeforeunload = function () 
-        {
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    window.onbeforeunload = function () {
         window.scrollTo(0, 0);
-        }
-    
-        $(document).ready( function () 
-        {
-            $('#down').on('click',function () 
-            {
-                $("html").scrollTop(0);  
-                console.log("Clicked!");
-               $('html, body').animate
-               ({
-                     scrollTop: $(".aboutMe").offset().top
-                }, 1000);
-            });
-        });
+    }
 
-    </script>
+    $(document).ready(function () {
+        $('#down').on('click', function () {
+            $("html").scrollTop(0);
+            console.log("Clicked!");
+            $('html, body').animate
+                ({
+                    scrollTop: $(".verticalSpace").offset().top
+                }, 900);
+        });
+    });
+
+    var i = 0;
+    var txt = 'Hey! Thats Me!';
+    var speed = 25;
+
+    function handWriting() {
+        if (i < txt.length) {
+            document.getElementById("AboutMe_Text").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(handWriting, speed);
+        }
+    }
+</script>
 
 <head>
-         <title>Edgar Melendrez - Profile</title>
-        <link rel="stylesheet" type="text/css" href ="styles.css">
-       
-        <meta charset="UTF-8">
-        <meta name="viewport">
-        <meta name="description" content="The Online Portfolio for Edgarventura Melendrez, looking to hire someone with well rounded knowledge of computers, someone who works well under pressure and well with others? Then look no further."/>
-        <meta name="keywords" content="Edgarventura, Melendrez"/>
-        <meta name="author" content="Edgarventura Melendrez" />
-        <meta name="robots" content="follow"/>
+    <title>Edgar Melendrez - Profile</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 
-        <!-- Comment -->
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <meta name="description"
+        content="The Online Portfolio for Edgarventura Melendrez, looking to hire someone with well rounded knowledge of computers, someone who works well under pressure and well with others? Then look no further." />
+    <meta name="keywords" content="Edgarventura, Melendrez" />
+    <meta name="author" content="Edgarventura Melendrez" />
+    <meta name="robots" content="follow" />
 
-    </head>
-    
-    
-    <header>
-        <span id="down">&#8595;</span>
-    </header>
+    <!-- Comment -->
 
-    <nav>
-        <img id="logo" src="photos\LogoV003.png">
-        <div class="button-container">
-            <button onClick="parent.location='mailto:evmelendrez@gmail.com?subject=Emailed From Website'" class="Email button">Email Me</button>
-            <button class="resume button">Resumé</button>
+</head>
+
+
+<header>
+    <span id="down">&#8595;</span>
+</header>
+
+<nav>
+    <img id="logo" src="photos\LogoV003.png">
+    <div class="button-container">
+        <button onClick="parent.location='mailto:evmelendrez@gmail.com?subject=Emailed From Website'"
+            class="Email button">Email Me</button>
+        <button class="resume button">Resumé</button>
+    </div>
+</nav>
+
+<body>
+    <spam class="verticalSpace"></spam>
+        <h1 class="aboutMe">About</h1>
+    <div class="AboutSection">    
+        
+
+        <!-- <div class=".AboutMe_Container"> -->
+        <div onmouseenter="handWriting()" class="polaroid">
+            <img class="AboutMe_Image" src="photos/Ed_Poloroid.jpg" alt="Picture of Me">
+            <div class="Polaroid_Container">
+                <p id="AboutMe_Text">
+                    <spam id="invisa-Text">.</spam><!--Hey! Thats Me!-->
+                </p>
+            </div>
+            <!-- </div>
+            <div class="img_Overlay">
+                <div class="AboutMe_Text">Hello World</div>
+            </div> -->
         </div>
-    </nav>    
-    <body> 
-        <h1 class="aboutMe">About Me</h1>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-	  
-    </body>
 
-    <footer>
+        <p class="AboutParagraph">Hello, I'm Edgar! I am a highschool graduate who decided 
+        that it was finaly time to test my knowledge on various 
+        programing subjects, such as digital art, HTML/CSS/JS, java 
+        etc. I have been "coding" since the seventh grade where I 
+        began with making basic html and css websites. Then that 
+        evolved into learning Java, then into doing digital art and 
+        so forth. The difference was that it was almost always for 
+        school. It is not until recently that I have decided that I 
+        want to grow my skillset on my own. Hence why I decided to 
+        start this poject and the various others that I plan to 
+        eventualy link onto this very same website. I hope that as I 
+        modify and expand this website that I can learn more about
+        various techniques and skillsets that are neccessary in real
+        industry, and that those who happen accross this website reach
+        out to me and offer constructive criticisms.
+    </div>
+</body>
 
-    </footer>
+<footer>
+
+</footer>
+
 </html>

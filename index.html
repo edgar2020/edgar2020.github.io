@@ -28,12 +28,17 @@
             setTimeout(handWriting, speed);
         }
     }
+    function ToBeImplemented()
+    {
+        alert("This feature has has not been added yet.\n Thank you for your patience");
+    }
+    
 </script>
 
 <head>
     <title>Edgar Melendrez - Profile</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-
+    <link rel="icon" href="photos/LogoV003.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport">
     <meta name="description"
@@ -47,7 +52,8 @@
 </head>
 
 
-<header>
+<header draggable="false">
+    <img draggable="false" class="background" src="photos/header_website(v001).png">
     <span id="down">&#8595;</span>
 </header>
 
@@ -56,30 +62,32 @@
     <div class="button-container">
         <button onClick="parent.location='mailto:evmelendrez@gmail.com?subject=Emailed From Website'"
             class="Email button">Email Me</button>
-        <button class="resume button">Resumé</button>
+        <button onClick="ToBeImplemented()" class="resume button">Resumé</button>
     </div>
 </nav>
 
 <body>
-    <spam class="verticalSpace"></spam>
+    <spam class="verticalSpace">.</spam>
         <h1 class="aboutMe">About</h1>
     <div class="AboutSection">    
         
 
         <!-- <div class=".AboutMe_Container"> -->
         <div onmouseenter="handWriting()" class="polaroid">
-            <img class="AboutMe_Image" src="photos/Ed_Poloroid.jpg" alt="Picture of Me">
+            <img draggable="false" class="AboutMe_Image" src="photos/Ed_Poloroid.jpg" alt="Picture of Me">
             <div class="Polaroid_Container">
                 <p id="AboutMe_Text">
                     <spam id="invisa-Text">.</spam><!--Hey! Thats Me!-->
                 </p>
             </div>
             <!-- </div>
-            <div class="img_Overlay">
+            <div class="img_Overlay">x
                 <div class="AboutMe_Text">Hello World</div>
             </div> -->
         </div>
 
+              
+        
         <p class="AboutParagraph">Hello, I'm Edgar! I am a highschool graduate who decided 
         that it was finaly time to test my knowledge on various 
         programing subjects, such as digital art, HTML/CSS/JS, java 
@@ -92,13 +100,56 @@
         start this poject and the various others that I plan to 
         eventualy link onto this very same website. I hope that as I 
         modify and expand this website that I can learn more about
-        various techniques and skillsets that are neccessary in real
+        various techniques and skillsets that are  neccessary in real
         industry, and that those who happen accross this website reach
         out to me and offer constructive criticisms.
+        <hr> 
+        
     </div>
+    <!-- <hr> -->
 </body>
 
-<footer>
+<footer class="Footer_Container">
+    <div class="Footer_Left">
+        <img src="photos/LogoV003.png">
+        <h3>About<span class="Footer_Span">Me</span></h3>
+        <p class="Footer_Links">
+            <a>Future Link #1</a>
+            <a>Future Links#2</a>
+            <a>Future Links#3</a>
+            <a>Future Links#4</a>
+        </p>
+        <p class="copyRight">&copy;Edgarventura Melendrez 2020</p>
+
+    </div>
+    <div class="Footer_Center">
+        <div>
+            <i class="fa Fa_Map_Maker"></i>
+            <p><span>1234 Somewhere Somewhere </span>Ca 92223</p>
+        </div>
+
+        <div>
+            <i class="fa Fa_Phone"></i>
+            <p>951-###-####</p>
+        </div>
+        <div class="fa Fa_Envelope">
+            <p><a href="mailto:evmelendrez@gmail.com?subject=Emailed From Website">evmelendrez@gmail.com</a></p>
+        </div>
+    </div>
+
+    <div class="Footer_Right">
+        <p class="Footer_About">
+            <Span>About the Page</Span>
+            I spent many weeks planing this project and even more actually
+            making it. I am pleased to say that as of now I am pleased with
+            the result. However I plan to continue making additions as time
+            passes.
+            <div class="Footer_Icons">
+                <a href="#"><i class="fa Fa_Insta"></i></a>
+                <a href="#"><i class="fa Fa_Linkedin"></i></a>
+            </div>
+        </p>
+    </div>
 
 </footer>
 

@@ -2,13 +2,13 @@
 /* font-family: 'Bungee Shade', cursive; */
 /* font-family: 'Ewert', cursive; */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-/* @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro'); */
-
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 html
 {
-    background-color: #9a98b5;
-    overflow-x: hidden;
-    user-select: none;
+  background-color: #9a98b5;
+  overflow-x: hidden;
+  /* Turns off selectablility to the whole website */
+  user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -24,10 +24,7 @@ font-family: monospace;
 
 header
 {
-  /* width:100vw; */
-  /* height: 80vh; */
-  u: none;
-  /* height: 91VH; */
+  /* Creates the parralax effect */
   height: 90%;
 	background-image: url('photos/header_website\(v001\).png');
 	display: flex;
@@ -43,21 +40,21 @@ header
 }
 .background
 {
+  /* invisible image */
   opacity: 0;
-  width:100%;
+  width:100%; /*Should equal bacground size of header*/
 
 }
 #logo
 {
   padding:7px;
-  
   width: 45px;
 }
+/* create the navigation bar */
 nav
 {
   border-top: 5px solid #5c2368;
   border-bottom: 3px solid #5c2368;
-  /* margin-top: -140px; */
   position: sticky;
   position: -webkit-sticky;
   top: 0px;
@@ -71,16 +68,12 @@ nav
 .button-container
 {
   right: 0px;
-  /* margin-top: 2vh; */
   float: right;
   top: 0px;
-  /* background-color: blue; */
 }
 nav .button {
   border: none;
-  /* text-decoration: wavy; */
   font-weight: bold;
-  
   width: 150px;
   color: #a0b9c6;
   padding: 20px 0px;
@@ -90,37 +83,26 @@ nav .button {
   display: inline-block;
   font-size: 20px;
   border-left: 1px solid #5c2368;
-  /* transition: all 2s; */
   cursor: pointer;
   
   
 }
 nav .button:hover {
-  /* transition-property: ; */
   transition-duration: 0.5s;
   background-color: #9831af;
   text-decoration: underline;
- 
-  /* animation-delay:  2s; */
 }
 
-
+/* down arrow located on the header */
 #down
 {
 	position: absolute;
   /* top:70%; */
-  margin-top: 200px;
+  margin-top: 400px;
   border-radius: 20px;
 	size: 40px;
 	padding: 20px;
 	font-size: 2.5em;
-}
-.verticalSpace
-{
-  /* height: 600px; */
-  padding: 30PX;
-  visibility: hidden;
-  background-color: aqua;
 }
 #down:hover
 {
@@ -128,11 +110,15 @@ nav .button:hover {
 	background-color: #eee;
 	opacity: 0.8;
 }
-h1
-{
-  
-  margin: 10px 0px 0px 50px;
+
+/* Positions "About" so that the javascript works well */
+.aboutMe{
+  padding-top:60px;
+  margin-top: -30px;
+  margin-left: 50px;
+  margin-bottom: 10px;
   color: #a5f8d3;
+  /* Creates black outline */
   text-shadow:
    -1px -1px 0 #000,  
     1px -1px 0 #000,
@@ -141,88 +127,75 @@ h1
     font-size: 60px;
     font-family: 'Bungee Shade', cursive;
 }
+/* Creates the Image in aboutMe Section */
 .AboutMe_Image {
   display: block;
   width: 20vw;
   height: auto;
+  
+  min-width: 190px;
+  /* creates grascale effect */
   filter: grayscale(100%);
 }
 
-/* .img_Overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #008CBA;
-} */
 .polaroid {
   margin-left: 35px;
   -ms-transform: rotate(-5deg);
   transform: rotate(-5deg);
   float: left;
-  /* position: relative; */
+  min-width: 190px;
   width: 20vw;
   border: 1px solid rgb(46, 46, 46);
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 35px;
   margin-right:40px;
-}
-#invisa-Text
-{
-  /* color: white; */
-  position: relative;
-  left:-2430px;
+  
 }
 .Polaroid_Container {
   text-align: center;
   padding: 20px 20px;
 }
-/* .AboutMe_Container:hover .img_Overlay {
-  opacity: 1;
-} */
+/* Creates invisable placeholder */
+#invisa-Text
+{
+  position: relative;
+  left:-2430px;
+}
 
+/* Text that appears on the poloroid */
 #AboutMe_Text {
   color: black;
-  /* font-family: 'Source Code Pro', monospace; */
-  font-size: 20px;
+  font-size: 25px;
   margin-left: -8px;
+  font-family: 'Caveat', cursive;
  
 }
+
+/* container for the entire about me section */
 .AboutSection
 {
   width: 100vw;
-  /* background-color: darkorange; */
   display: inline-flex;
-  /* display: inline-block; */
-  /* width: 70vw;
-  float: right; */
 }
+/* Paragrpah in about me section */
 .AboutParagraph
 {
+  
+  text-indent: 40px;
   font-size: 20px;
-
   position: absolute;
   right: 0px;
   width: 68vw;
-  /* height: 100%; */
-  /* background-color: darkgreen; */
-  float: right;
-  /* margin-right:20px; */
-  /* margin-right: 15px; */
+  margin-left:60px;
+  margin-right: 10px;
+  /* float: right; */
 }
+/* Horizontal line */
 hr
 {
   position: relative;
   left: -10px;
-  /* padding:40px; */
-  /* background-color: rgb(50, 130, 204); */
 }
 
 footer
@@ -371,6 +344,7 @@ footer
   margin-bottom: 5px;
 }
 
+/* Hides the down arrow at certain point */
 @media screen and (max-width:1200px) 
 {
   #down
@@ -397,7 +371,7 @@ footer
   }
 }
 
-
+/* makes the parralax image responsive */
   @media screen and (max-width:500px) 
   {
      
@@ -413,10 +387,11 @@ footer
       height: 100vh;
     }
    
-  
+  /* reshows the down arrow */
   #down
   {
-    top:55vh;
+    margin: 0px;
+    top:85vh;
     visibility: visible;
     margin-bottom: initial;
   }
@@ -425,10 +400,10 @@ footer
     }
     
   }
-  @media screen and (max-width:800px) 
+/* Re fromats the about Me section for thinner screens */
+  @media screen and (max-width:925px) 
   {
-  
-    h1 
+  .aboutMe 
     {
       width: 100%;
       margin: 0;
@@ -462,14 +437,17 @@ footer
     .AboutParagraph
     {
       text-indent: 50px;
+      text-align: start;
       left: 5%;
       width:90%;
+      margin: 0;
+      margin-top: 40px;
       float:none;
       position: relative;
     }
     
   }
-
+/* removes parralaz effect for mobile devices to avoid complications */
   @media only screen and (max-device-width: 1366px) {
     header {
       background-attachment: scroll;

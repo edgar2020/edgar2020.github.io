@@ -6,28 +6,35 @@
         window.scrollTo(0, 0);
     }
 
+    //gives the down arrow functionality by animating scrolling to a set id
     $(document).ready(function () {
         $('#down').on('click', function () {
             $("html").scrollTop(0);
             console.log("Clicked!");
             $('html, body').animate
                 ({
-                    scrollTop: $(".verticalSpace").offset().top
-                }, 900);
+                    scrollTop: $(".aboutMe").offset().top 
+                }, 900);//$("____") where the down arrow takes you too
         });
     });
-
-    var i = 0;
-    var txt = 'Hey! Thats Me!';
-    var speed = 25;
+    // Text Animation to the Poloroid Image
+    var i = 0;//current letter in the cycle
+    var txt = 'Hey! Thats Me!'; //Text that is animated
+    var speed = 25; //rate at which individual letters appear
 
     function handWriting() {
+        //recursice funtion that adds each letter if there are indivduale letters left
+        //ex: text="Hello" --> H --> He --> Hel --> Hell --> Hello
+        //i becomes larger than the length so the recursive cycle ends
+        
         if (i < txt.length) {
             document.getElementById("AboutMe_Text").innerHTML += txt.charAt(i);
             i++;
             setTimeout(handWriting, speed);
         }
     }
+
+    //gives alert if unfinished feature is selected
     function ToBeImplemented()
     {
         alert("This feature has has not been added yet.\n Thank you for your patience");
@@ -37,8 +44,9 @@
 
 <head>
     <title>Edgar Melendrez - Profile</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="icon" href="photos/LogoV003.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!--Links Css-->
+    <link rel="icon" href="photos/LogoV003.png" type="image/x-icon"><!--Adds browser icon-->
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport">
     <meta name="description"
@@ -46,19 +54,18 @@
     <meta name="keywords" content="Edgarventura, Melendrez" />
     <meta name="author" content="Edgarventura Melendrez" />
     <meta name="robots" content="follow" />
-
-    <!-- Comment -->
-
 </head>
 
-
+<!-- Parralx Image Header -->
 <header draggable="false">
+    <!-- Invisible image to allow for resizability of parralax backgroun -->
     <img draggable="false" class="background" src="photos/header_website(v001).png">
     <span id="down">&#8595;</span>
 </header>
 
 <nav>
-    <img id="logo" src="photos\LogoV003.png">
+    <img id="logo" src="photos\LogoV003.png"> <!--Custom Logo-->
+    <!-- Nav bar Links -->
     <div class="button-container">
         <button onClick="parent.location='mailto:evmelendrez@gmail.com?subject=Emailed From Website'"
             class="Email button">Email Me</button>
@@ -67,23 +74,19 @@
 </nav>
 
 <body>
-    <spam class="verticalSpace">.</spam>
         <h1 class="aboutMe">About</h1>
     <div class="AboutSection">    
         
 
-        <!-- <div class=".AboutMe_Container"> -->
         <div onmouseenter="handWriting()" class="polaroid">
             <img draggable="false" class="AboutMe_Image" src="photos/Ed_Poloroid.jpg" alt="Picture of Me">
             <div class="Polaroid_Container">
                 <p id="AboutMe_Text">
+                    <!-- Place Holder so that the text animation seems fluid -->
                     <spam id="invisa-Text">.</spam><!--Hey! Thats Me!-->
                 </p>
             </div>
-            <!-- </div>
-            <div class="img_Overlay">x
-                <div class="AboutMe_Text">Hello World</div>
-            </div> -->
+           
         </div>
 
               
@@ -108,8 +111,9 @@
     </div>
     <!-- <hr> -->
 </body>
-
+<!-- footer based on a design I found online, lost link, Source: (Need to find it) -->
 <footer class="Footer_Container">
+    <!-- Left most collum -->
     <div class="Footer_Left">
         <img src="photos/LogoV003.png">
         <h3>About<span class="Footer_Span">Me</span></h3>
@@ -120,7 +124,7 @@
             <a>Future Links#4</a>
         </p>
         <p class="copyRight">&copy;Edgarventura Melendrez 2020</p>
-
+    <!-- middle collum -->
     </div>
     <div class="Footer_Center">
         <div>
@@ -136,7 +140,7 @@
             <p><a href="mailto:evmelendrez@gmail.com?subject=Emailed From Website">evmelendrez@gmail.com</a></p>
         </div>
     </div>
-
+    <!-- right most collumn -->
     <div class="Footer_Right">
         <p class="Footer_About">
             <Span>About the Page</Span>

@@ -40,6 +40,18 @@
         alert("This feature has has not been added yet.\n Thank you for your patience");
     }
 
+    function show_iframe()
+    {
+        var isVis = false;
+        var elem = document.getElementById("pdf_Resume");
+
+        if(!isVis)
+        {
+            elem.style.visibility = 'visible' ;
+            isVis = true;
+        }
+    }
+
     
     
 </script>
@@ -71,9 +83,15 @@
     <div class="button-container">
         <button onClick="parent.location='mailto:evmelendrez@gmail.com?subject=Emailed From Website'"
             class="Email button">Email Me</button>
-        <button onClick="ToBeImplemented()" class="resume button">Resumé</button>
+        <button onClick="show_iframe()" class="resume button">Resumé</button>
     </div>
 </nav>
+\
+<div id="pdf_Resume" style="visibility:hidden">
+    <div>
+    <iframe src="photos\Resume.pdf"></iframe>
+    </div>
+</div> 
 
 <body>
         <h1 class="aboutMe">About</h1>

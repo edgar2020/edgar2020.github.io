@@ -40,7 +40,7 @@
         alert("This feature has has not been added yet.\n Thank you for your patience");
     }
 
-    function show_iframe()
+    function iframeDisplay()
     {
         var isVis = false;
         var elem = document.getElementById("pdf_Resume");
@@ -49,6 +49,11 @@
         {
             elem.style.visibility = 'visible' ;
             isVis = true;
+        }
+        else
+        {
+            elem.style.visibility = 'hidden' ;
+            isVis = false;
         }
     }
 
@@ -77,24 +82,26 @@
     <span id="down">&#8595;</span>
 </header>
 
+
+
 <nav>
     <img id="logo" src="photos\LogoV003.png"> <!--Custom Logo-->
     <!-- Nav bar Links -->
     <div class="button-container">
         <button onClick="parent.location='mailto:evmelendrez@gmail.com?subject=Emailed From Website'"
             class="Email button">Email Me</button>
-        <button onClick="show_iframe()" class="resume button">Resumé</button>
+        <button onClick="iframeDisplay()" class="resume button">Resumé</button>
     </div>
 </nav>
-\
+
 <div id="pdf_Resume" style="visibility:hidden">
     <div>
-    <iframe src="photos\Resume.pdf"></iframe>
+    <iframe id="resumeFile" height="100%" width="100%" src="photos\Resume.pdf"></iframe>
     </div>
 </div> 
 
 <body>
-        <h1 class="aboutMe">About</h1>
+    <h1 class="aboutMe">About</h1>
     <div class="AboutSection">    
         
 
@@ -130,6 +137,8 @@
         
     </div>
     <!-- <hr> -->
+    
+
 </body>
 <!-- footer based on a design I found online, lost link, Source: (Need to find it) -->
 <footer class="Footer_Container">

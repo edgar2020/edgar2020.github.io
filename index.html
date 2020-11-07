@@ -40,9 +40,10 @@
         alert("This feature has has not been added yet.\n Thank you for your patience");
     }
 
+    var isVis = false;
     function iframeDisplay()
     {
-        var isVis = false;
+        
         var elem = document.getElementById("pdf_Resume");
 
         if(!isVis)
@@ -95,9 +96,11 @@
 </nav>
 
 <div id="pdf_Resume" style="visibility:hidden">
+    <button id="closeiframe" onClick="iframeDisplay()">X</button>
     <div>
     <iframe id="resumeFile" height="100%" width="100%" src="photos\Resume.pdf"></iframe>
     </div>
+    
 </div> 
 
 <body>

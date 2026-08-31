@@ -15,7 +15,6 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
           submodules: 'recursive'
-          ssh: true
-      
+       
       - name: Build and deploy
         run: echo "Build successful"

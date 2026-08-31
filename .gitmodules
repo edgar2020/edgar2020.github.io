@@ -1,0 +1,3 @@
+[submodule "course_materials"]
+	path = course_materials
+	url = https://github.com/edgar2020/course_materials_Fall_2026

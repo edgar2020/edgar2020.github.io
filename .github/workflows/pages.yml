@@ -1,4 +1,4 @@
-name: Build with Submodules
+name: Checkout Repository
 
 on:
   push:
@@ -13,9 +13,8 @@ jobs:
       - name: Checkout code with submodules
         uses: actions/checkout@v4
         with:
-          submodules: recursive
           token: ${{ secrets.GH_TOKEN }}
+          submodules: 'recursive'
       
       - name: Build and deploy
         run: echo "Build successful"
-        

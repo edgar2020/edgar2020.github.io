@@ -10,15 +10,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Configure Git for submodules
-        run: |
-          git config --global url."https://${{ secrets.GH_TOKEN }}@github.com/".insteadOf "https://github.com/"
-      
       - name: Checkout code with submodules
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_TOKEN }}
           submodules: 'recursive'
+          fetch-depth: 0
+
+      - name: Update submodules with token
+        run: |
+          git config --global url."https://${{ secrets.GH_TOKEN }}@github.com/".insteadOf "https://github.com/"
+          git submodule update --init --recursive
       
       - name: Build and deploy
         run: echo "Build successful"

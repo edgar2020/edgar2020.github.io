@@ -33,13 +33,67 @@
       <li><a href="other-activities.html">Other Activities</a></li>
     </ul>
   </nav>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollList = document.getElementById('day-nav-list');
+    const scrollButtons = document.querySelectorAll('.day-nav-arrow');
+
+    // If the elements don't exist on this page, exit early
+    if (!scrollList || scrollButtons.length === 0) return;
+
+    // How many pixels to jump per click. Adjust this if you want it to scroll more/less!
+    const scrollAmount = 150; 
+
+    // 1. Handle the button clicks
+    scrollButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Grab the 1 or -1 from your data attribute
+        const direction = parseInt(button.getAttribute('data-day-scroll'), 10);
+        
+        // Scroll the list
+        scrollList.scrollBy({
+          left: direction * scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // 2. Update the disabled state of the buttons
+    const updateButtonStates = () => {
+      const leftButton = document.querySelector('.day-nav-arrow[data-day-scroll="-1"]');
+      const rightButton = document.querySelector('.day-nav-arrow[data-day-scroll="1"]');
+
+      // If we are at the very beginning (left: 0), disable the left arrow
+      if (scrollList.scrollLeft <= 0) {
+        leftButton.disabled = true;
+      } else {
+        leftButton.disabled = false;
+      }
+
+      // If the amount we've scrolled + the visible width equals the total width, disable the right arrow
+      // (Subtracting 2 pixels as a buffer for decimal rounding issues on certain devices)
+      if (scrollList.scrollLeft + scrollList.clientWidth >= scrollList.scrollWidth - 2) {
+        rightButton.disabled = true;
+      } else {
+        rightButton.disabled = false;
+      }
+    };
+
+    // Listen for scroll events (both button clicks and finger swipes) to update buttons
+    scrollList.addEventListener('scroll', updateButtonStates);
+
+    // Run once on load and on window resize to ensure buttons start in the correct state
+    updateButtonStates();
+    window.addEventListener('resize', updateButtonStates);
+  });
+</script>
 </header>
 
 <main id="main">
   <div class="page-header wrap">
     <span class="eyebrow">Course page</span>
     <h1>DATA 101</h1>
-    <p>Introduction to Data Science. Everything for the course lives on this page — general info up top, the day-by-day plan in the middle, and review resources at the bottom.</p>
   </div>
  
   <!-- ============================================================
@@ -52,7 +106,7 @@
       <li class="catalog-entry">
         <span class="label">Room</span>
         <span class="leader" aria-hidden="true"></span>
-        <span class="value">Building name, Room 000</span>
+        <span class="value">Duke Hall, Rm 109</span>
       </li>
       <li class="catalog-entry">
         <span class="label">Office hours</span>
@@ -66,10 +120,10 @@
       </li>
     </ul>
  
-    <div class="callout">
+    <!-- <div class="callout">
       <h3>Important course information</h3>
       <p>Placeholder — use this box for anything students need to see first: late policy, academic integrity notes, required materials, or a link to the syllabus.</p>
-    </div>
+    </div> -->
   </section>
  
   <!-- ============================================================

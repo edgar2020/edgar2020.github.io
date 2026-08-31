@@ -22,6 +22,49 @@
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
 }
+
+/* =========================================================
+   Work in Progress Badge
+   ========================================================= */
+.wip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--white);
+  border: 1px solid var(--grey-300);
+  color: var(--grey-700);
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  width: fit-content;
+}
+
+/* The animated dot */
+.wip-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--brass);
+  border-radius: 50%;
+  /* Runs the pulse animation infinitely */
+  animation: pulse-ring 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* Keyframes for the radar-like pulse effect */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(169, 131, 78, 0.6); /* --brass in rgb */
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(169, 131, 78, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(169, 131, 78, 0);
+  }
+}
 /* =========================================================
    Design tokens
    ========================================================= */
@@ -427,10 +470,10 @@ hr.rule{
 /* =========================================================
    Page sections / footer
    ========================================================= */
-main{ padding: 3rem 0 4rem; }
+main{ padding: 0rem 0rem 4rem; }
 main section + section{ margin-top: 2.5rem; }
 
-.page-header{ padding: 3.25rem 0 2.5rem; border-bottom: 1px solid var(--grey-150); }
+.page-header{ padding: 3.25rem 1rem 2.5rem; border-bottom: 1px solid var(--grey-150); }
 .page-header .eyebrow{ margin-bottom: 0.6rem; display: block; }
 .page-header p{ max-width: 60ch; }
 
@@ -557,19 +600,17 @@ main section + section{ margin-top: 2.5rem; }
 
 /* =========================================================
    Day quick-access legend (DATA 101 — Daily assignments)
-   Plain anchor links to each day's entry, no JS. Sticky column
-   on desktop; collapses to a horizontal scrolling strip on mobile.
+   Plain anchor links to each day's entry, no JS required for the
+   links themselves. Mobile-only: a horizontal scrolling strip with
+   prev/next buttons. Hidden entirely on desktop — the day list is
+   short enough there that a jump-nav isn't needed.
    ========================================================= */
 .daily-layout{
-  display: grid;
-  grid-template-columns: 168px 1fr;
-  gap: 2rem;
-  align-items: start;
+  display: block;
 }
 
 .day-nav{
-  position: sticky;
-  top: 1.5rem;
+  display: none;
 }
 
 .day-nav .day-nav-label{
@@ -587,7 +628,6 @@ main section + section{ margin-top: 2.5rem; }
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
   gap: 0.3rem;
 }
 
@@ -626,8 +666,7 @@ main section + section{ margin-top: 2.5rem; }
 /* Give anchor-jump targets a little breathing room from the viewport edge */
 .course{ scroll-margin-top: 1.25rem; }
 
-/* Prev/next arrow buttons — hidden on desktop (the sticky sidebar
-   doesn't need them); shown on mobile next to the pill strip.
+/* Prev/next arrow buttons, mobile-only (see media query below).
    Progressive enhancement: if JS is off, the buttons just sit there
    and the strip still works fine by swipe/touch scroll. */
 .day-nav-arrow{
@@ -652,12 +691,9 @@ main section + section{ margin-top: 2.5rem; }
 .day-nav-arrow:disabled:hover{ background: var(--white); border-color: var(--grey-300); }
 
 @media (max-width: 700px){
-  .daily-layout{
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
   .day-nav{
-    position: static;
+    display: block;
+    margin-bottom: 1.75rem;
   }
   .day-nav-scroller{
     display: flex;
@@ -669,7 +705,6 @@ main section + section{ margin-top: 2.5rem; }
   }
   .day-nav ul{
     flex: 1 1 auto;
-    flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;

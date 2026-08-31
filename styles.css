@@ -430,7 +430,7 @@ hr.rule{
 main{ padding: 3rem 0 4rem; }
 main section + section{ margin-top: 2.5rem; }
 
-.page-header{ padding: 3.25rem 1rem 2.5rem; border-bottom: 1px solid var(--grey-150); }
+.page-header{ padding: 3.25rem 0 2.5rem; border-bottom: 1px solid var(--grey-150); }
 .page-header .eyebrow{ margin-bottom: 0.6rem; display: block; }
 .page-header p{ max-width: 60ch; }
 
@@ -626,6 +626,31 @@ main section + section{ margin-top: 2.5rem; }
 /* Give anchor-jump targets a little breathing room from the viewport edge */
 .course{ scroll-margin-top: 1.25rem; }
 
+/* Prev/next arrow buttons — hidden on desktop (the sticky sidebar
+   doesn't need them); shown on mobile next to the pill strip.
+   Progressive enhancement: if JS is off, the buttons just sit there
+   and the strip still works fine by swipe/touch scroll. */
+.day-nav-arrow{
+  display: none;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--grey-300);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--maroon);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+.day-nav-arrow:hover{ background: var(--grey-100); border-color: var(--maroon); }
+.day-nav-arrow:disabled{ opacity: 0.35; cursor: default; }
+.day-nav-arrow:disabled:hover{ background: var(--white); border-color: var(--grey-300); }
+
 @media (max-width: 700px){
   .daily-layout{
     grid-template-columns: 1fr;
@@ -634,16 +659,24 @@ main section + section{ margin-top: 2.5rem; }
   .day-nav{
     position: static;
   }
+  .day-nav-scroller{
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .day-nav-arrow{
+    display: flex;
+  }
   .day-nav ul{
+    flex: 1 1 auto;
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
     gap: 0.5rem;
-    padding-bottom: 0.6rem;
-    margin: 0 -1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    /* contained within the viewport width — no edge-to-edge bleed */
+    min-width: 0;
   }
   .day-nav a{
     flex: 0 0 auto;

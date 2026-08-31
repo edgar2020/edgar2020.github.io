@@ -82,14 +82,18 @@
     <div class="daily-layout">
       <nav class="day-nav" aria-label="Jump to a day">
         <span class="day-nav-label">Jump to</span>
-        <ul>
-          <li><a href="#day-1">Day 1</a></li>
-          <li><a href="#day-2">Day 2</a></li>
-          <li><a href="#day-3" class="tbd-link">Day 3</a></li>
-          <li><a href="#day-4" class="tbd-link">Day 4</a></li>
-          <li><a href="#day-5" class="tbd-link">Day 5</a></li>
-          <li><a href="#day-6" class="tbd-link">Day 6</a></li>
-        </ul>
+        <div class="day-nav-scroller">
+          <button type="button" class="day-nav-arrow" data-day-scroll="-1" aria-label="Show earlier days" disabled>&#8249;</button>
+          <ul id="day-nav-list">
+            <li><a href="#day-1">Day 1</a></li>
+            <li><a href="#day-2">Day 2</a></li>
+            <li><a href="#day-3" class="tbd-link">Day 3</a></li>
+            <li><a href="#day-4" class="tbd-link">Day 4</a></li>
+            <li><a href="#day-5" class="tbd-link">Day 5</a></li>
+            <li><a href="#day-6" class="tbd-link">Day 6</a></li>
+          </ul>
+          <button type="button" class="day-nav-arrow" data-day-scroll="1" aria-label="Show later days">&#8250;</button>
+        </div>
       </nav>
  
       <div class="day-list">
@@ -187,7 +191,6 @@
     </ul>
   </section>
 </main>
-
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <span>&copy; 2026 Edgar Melendrez · University of Redlands</span>

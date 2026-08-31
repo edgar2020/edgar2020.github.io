@@ -15,12 +15,7 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
           submodules: 'recursive'
-          fetch-depth: 0
-
-      - name: Update submodules with token
-        run: |
-          git config --global url."https://${{ secrets.GH_TOKEN }}@github.com/".insteadOf "https://github.com/"
-          git submodule update --init --recursive
+          ssh: true
       
       - name: Build and deploy
         run: echo "Build successful"

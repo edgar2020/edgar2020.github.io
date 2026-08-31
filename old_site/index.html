@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    }
+
+    //gives the down arrow functionality by animating scrolling to a set id
+    $(document).ready(function () {
+        $('#down').on('click', function () {
+            $("html").scrollTop(0);
+            console.log("Clicked!");
+            $('html, body').animate
+                ({
+                    scrollTop: $(".aboutMe").offset().top 
+                }, 900);//$("____") where the down arrow takes you too
+        });
+    });
+    // Text Animation to the Poloroid Image
+    var i = 0;//current letter in the cycle
+    var txt = 'Hey! Thats Me!'; //Text that is animated
+    var speed = 25; //rate at which individual letters appear
+
+    function handWriting() {
+        //recursice funtion that adds each letter if there are indivduale letters left
+        //ex: text="Hello" --> H --> He --> Hel --> Hell --> Hello
+        //i becomes larger than the length so the recursive cycle ends
+        
+        if (i < txt.length) {
+            document.getElementById("AboutMe_Text").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(handWriting, speed);
+        }
+    }
+
+    //gives alert if unfinished feature is selected
+    function ToBeImplemented()
+    {
+        alert("This feature has has not been added yet.\n Thank you for your patience");
+    }
+
+    var isVis = false;
+    function iframeDisplay()
+    {
+        
+        var elem = document.getElementById("pdf_Resume");
+
+        if(!isVis)
+        {
+            elem.style.visibility = 'visible' ;
+            isVis = true;
+        }
+        else
+        {
+            elem.style.visibility = 'hidden' ;
+            isVis = false;
+        }
+    }
+
+</script>
+
+<head>
+    <title>Edgar Melendrez - Profile</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!--Links Css-->
+    <link rel="icon" href="photos/LogoV003.png" type="image/x-icon"><!--Adds browser icon-->
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <meta name="description"
+        content="The Online Portfolio for Edgarventura Melendrez, looking to hire someone with well rounded knowledge of computers, someone who works well under pressure and well with others? Then look no further." />
+    <meta name="keywords" content="Edgarventura, Melendrez" />
+    <meta name="author" content="Edgarventura Melendrez" />
+    <meta name="robots" content="follow" />
+</head>
+
+<!-- Parralx Image Header -->
+<header draggable="false">
+    <!-- Invisible image to allow for resizability of parralax backgroun -->
+    <img draggable="false" class="background" src="photos/header_website(v001).png">
+    <span id="down">&#8595;</span>
+</header>
+
+
+
+<nav>
+    <img id="logo" src="photos\LogoV003.png"> <!--Custom Logo-->
+    <!-- Nav bar Links -->
+    <div class="button-container">
+        <button onClick="parent.location='mailto:evmelendrez@gmail.com?subject=Emailed From Website'"
+            class="Email button">Email Me</button>
+        <button onClick="iframeDisplay()" class="resume button">Resumé</button>
+    </div>
+</nav>
+
+<div id="pdf_Resume" style="visibility:hidden">
+    <button id="closeiframe" onClick="iframeDisplay()">X</button>
+    <div>
+    <iframe id="resumeFile" height="100%" width="100%" src="photos\Resume.pdf"></iframe>
+    </div>
+    
+</div> 
+
+<body>
+    <h1 class="aboutMe">About</h1>
+    <div class="AboutSection">    
+        
+
+        <div onmouseenter="handWriting()" class="polaroid">
+            <img draggable="false" class="AboutMe_Image" src="photos/Ed_Poloroid.jpg" alt="Picture of Me">
+            <div class="Polaroid_Container">
+                <p id="AboutMe_Text">
+                    <!-- Place Holder so that the text animation seems fluid -->
+                    <spam id="invisa-Text">.</spam><!--Hey! Thats Me!-->
+                </p>
+            </div>
+           
+        </div>
+
+              
+        
+        <p class="AboutParagraph">Hello, I'm Edgar! I am a highschool graduate who decided 
+        that it was finaly time to test my knowledge on various 
+        programing subjects, such as digital art, HTML/CSS/JS, java 
+        etc. I have been "coding" since the seventh grade where I 
+        began with making basic html and css websites. Then that 
+        evolved into learning Java, then into doing digital art and 
+        so forth. The difference was that it was almost always for 
+        school. It is not until recently that I have decided that I 
+        want to grow my skillset on my own. Hence why I decided to 
+        start this poject and the various others that I plan to 
+        eventualy link onto this very same website. I hope that as I 
+        modify and expand this website that I can learn more about
+        various techniques and skillsets that are  neccessary in real
+        industry, and that those who happen accross this website reach
+        out to me and offer constructive criticisms.
+        <hr> 
+        
+    </div>
+    <!-- <hr> -->
+    
+
+</body>
+<!-- footer based on a design I found online, lost link, Source: (Need to find it) -->
+<footer class="Footer_Container">
+    <!-- Left most collum -->
+    <div class="Footer_Left">
+        <img src="photos/LogoV003.png">
+        <h3>About<span class="Footer_Span">Me</span></h3>
+        <p class="Footer_Links">
+            <a href="aboutEdgar2022/assignment1.html">Assignment 1</a>
+            <!-- <a>Future Links#2</a>
+            <a>Future Links#3</a>
+            <a>Future Links#4</a> -->
+        </p>
+        <p class="copyRight">&copy;Edgarventura Melendrez 2020</p>
+    <!-- middle collum -->
+    </div>
+    <div class="Footer_Center">
+        <div>
+            <i class="fa Fa_Map_Maker"></i>
+            <p><span>1234 Somewhere Somewhere </span>Ca 92223</p>
+        </div>
+
+        <div>
+            
+            <i class="fa Fa_Phone"></i>
+            <p>951-###-####</p>
+        </div>
+        <div class="fa Fa_Envelope">
+            <p><a href="mailto:evmelendrez@gmail.com?subject=Emailed From Website">evmelendrez@gmail.com</a></p>
+        </div>
+    </div>
+    <!-- right most collumn -->
+    <div class="Footer_Right">
+        <p class="Footer_About">
+            <Span>About the Page</Span>
+            I spent many weeks planing this project and even more actually
+            making it. I am pleased to say that as of now I am pleased with
+            the result. However I plan to continue making additions as time
+            passes.
+            <div class="Footer_Icons">
+                <a href="#"><i class="fa Fa_Insta"></i></a>
+                <a href="#"><i class="fa Fa_Linkedin"></i></a>
+            </div>
+        </p>
+    </div>
+
+</footer>
+
+</html>

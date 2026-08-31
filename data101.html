@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edgar Melendrez — Data Science, University of Reading</title>
+<meta name="description" content="Personal site of Edgar Melendrez — schedule, teaching, Data Science at UoR, and other activities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav-bar" aria-label="Primary">
+    <!-- <a class="brand" href="index.html">
+      <span class="crest" aria-hidden="true">EM</span>
+      <span class="brand-text">
+        <span class="brand-name">Edgar Melendrez</span>
+        <span class="brand-role">Data Science · UoR</span>
+      </span>
+    </a> -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">Menu</label>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="data101.html" class="active" aria-current="page">DATA 101</a></li>
+      <li><a href="data-science-uor.html">Data Science at UoR</a></li>
+      <li><a href="other-activities.html">Other Activities</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="page-header wrap">
+    <span class="eyebrow">Course page</span>
+    <h1>DATA 101</h1>
+    <p>Introduction to Data Science. Everything for the course lives on this page — general info up top, the day-by-day plan in the middle, and review resources at the bottom.</p>
+  </div>
+ 
+  <!-- ============================================================
+       GENERAL CLASS INFORMATION
+       ============================================================ -->
+  <section class="wrap" style="margin-top: 2.5rem;" aria-labelledby="general-info-heading">
+    <h2 id="general-info-heading">General class information</h2>
+ 
+    <ul class="catalog">
+      <li class="catalog-entry">
+        <span class="label">Room</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="value">Building name, Room 000</span>
+      </li>
+      <li class="catalog-entry">
+        <span class="label">Office hours</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="value"><a href="schedule.html">See full schedule</a></span>
+      </li>
+      <li class="catalog-entry">
+        <span class="label">Canvas</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="value"><a href="#" target="_blank" rel="noopener">Go to course page</a></span>
+      </li>
+    </ul>
+ 
+    <div class="callout">
+      <h3>Important course information</h3>
+      <p>Placeholder — use this box for anything students need to see first: late policy, academic integrity notes, required materials, or a link to the syllabus.</p>
+    </div>
+  </section>
+ 
+  <!-- ============================================================
+       DAILY ASSIGNMENTS (main section)
+       ============================================================ -->
+  <section class="wrap" style="margin-top: 3rem;" aria-labelledby="daily-heading">
+    <h2 id="daily-heading">Daily assignments</h2>
+    <p>What we're covering and what's due, day by day. Days with a topic already set can be expanded for details — days marked <em>To be determined</em> are shaded out until they're filled in.</p>
+ 
+    <div class="daily-layout">
+      <nav class="day-nav" aria-label="Jump to a day">
+        <span class="day-nav-label">Jump to</span>
+        <ul>
+          <li><a href="#day-1">Day 1</a></li>
+          <li><a href="#day-2">Day 2</a></li>
+          <li><a href="#day-3" class="tbd-link">Day 3</a></li>
+          <li><a href="#day-4" class="tbd-link">Day 4</a></li>
+          <li><a href="#day-5" class="tbd-link">Day 5</a></li>
+          <li><a href="#day-6" class="tbd-link">Day 6</a></li>
+        </ul>
+      </nav>
+ 
+      <div class="day-list">
+ 
+        <details class="course" id="day-1" open>
+          <summary>
+            <span class="code">Day 1</span>
+            <span class="title">Course introduction &amp; syllabus</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Mon, Sep 1</span>
+          </summary>
+          <div class="course-body">
+            <p><strong>In class:</strong> Placeholder — syllabus walkthrough, tools setup (Python, notebooks).</p>
+            <p><strong>Homework:</strong> Placeholder — install Anaconda/Jupyter before next class.</p>
+          </div>
+        </details>
+ 
+        <details class="course" id="day-2">
+          <summary>
+            <span class="code">Day 2</span>
+            <span class="title">Data types &amp; loading data</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Wed, Sep 3</span>
+          </summary>
+          <div class="course-body">
+            <p><strong>In class:</strong> Placeholder — reading CSVs, first look at pandas.</p>
+            <p><strong>Homework:</strong> Placeholder — problem set 1, due next class.</p>
+          </div>
+        </details>
+ 
+        <div class="course day-row tbd" id="day-3">
+          <span class="code">Day 3</span>
+          <span class="title">To be determined</span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="term">Mon, Sep 8</span>
+        </div>
+ 
+        <div class="course day-row tbd" id="day-4">
+          <span class="code">Day 4</span>
+          <span class="title">To be determined</span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="term">Wed, Sep 10</span>
+        </div>
+ 
+        <div class="course day-row tbd" id="day-5">
+          <span class="code">Day 5</span>
+          <span class="title">To be determined</span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="term">Mon, Sep 15</span>
+        </div>
+ 
+        <div class="course day-row tbd" id="day-6">
+          <span class="code">Day 6</span>
+          <span class="title">To be determined</span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="term">Wed, Sep 17</span>
+        </div>
+ 
+      </div>
+    </div>
+ 
+    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--grey-500);">
+      This list grows as the term goes on — check back before each class for updates.
+    </p>
+  </section>
+ 
+  <!-- ============================================================
+       HOMEWORK SOLUTIONS / EXAM REVIEW
+       ============================================================ -->
+  <section class="wrap" style="margin-top: 3rem;" aria-labelledby="review-heading">
+    <h2 id="review-heading">Homework solutions / exam review</h2>
+    <p>Posted after each assignment or exam is returned. Placeholder links below — swap in the real files or Canvas links when ready.</p>
+ 
+    <ul class="catalog">
+      <li class="catalog-entry">
+        <span class="label">Problem Set 1 — solutions</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="value"><a href="#">View PDF</a></span>
+      </li>
+      <li class="catalog-entry">
+        <span class="label">Problem Set 2 — solutions</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="value muted">Not yet posted</span>
+      </li>
+      <li class="catalog-entry">
+        <span class="label">Midterm review guide</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="value muted">Not yet posted</span>
+      </li>
+      <li class="catalog-entry">
+        <span class="label">Final exam review guide</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="value muted">Not yet posted</span>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>&copy; 2026 Edgar Melendrez · University of Redlands</span>
+    <ul class="footer-links">
+      <li><a href="mailto:edgar_melendrez@redlands.edu">Email</a></li>
+      <!-- <li><a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a></li> -->
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

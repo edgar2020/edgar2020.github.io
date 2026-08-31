@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Ewert&display=swap');
+/* font-family: 'Bungee Shade', cursive; */
+/* font-family: 'Ewert', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+html
+{
+  background-color: #9a98b5;
+  overflow-x: hidden;
+  /* Turns off selectablility to the whole website */
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  
+}
+
+
+*
+{
+padding: 0px;
+margin: 0px;
+font-family: monospace;
+}
+
+header
+{
+  /* Creates the parralax effect */
+  height: 90%;
+	background-image: url('photos/header_website\(v001\).png');
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+  margin-bottom: 30px;
+  background-color: pink;
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size:100% auto;
+}
+.background
+{
+  /* invisible image */
+  opacity: 0;
+  width:100%; /*Should equal bacground size of header*/
+
+}
+#logo
+{
+  padding:7px;
+  width: 45px;
+}
+/* create the navigation bar */
+nav
+{
+  border-top: 5px solid #5c2368;
+  border-bottom: 3px solid #5c2368;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  margin-top: -100VH;
+  display: inline-block;
+  background-color: #802392;
+  width: 100%;
+   z-index: 1;
+}
+
+.button-container
+{
+  right: 0px;
+  float: right;
+  top: 0px;
+}
+nav .button {
+  border: none;
+  font-weight: bold;
+  width: 150px;
+  color: #a0b9c6;
+  padding: 20px 0px;
+  text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  display: inline-block;
+  font-size: 20px;
+  border-left: 1px solid #5c2368;
+  cursor: pointer;
+  
+  
+}
+nav .button:hover {
+  transition-duration: 0.5s;
+  background-color: #9831af;
+  text-decoration: underline;
+}
+
+/* down arrow located on the header */
+#down
+{
+	position: absolute;
+  /* top:70%; */
+  margin-top: 400px;
+  border-radius: 20px;
+	size: 40px;
+	padding: 20px;
+	font-size: 2.5em;
+}
+#down:hover
+{
+	cursor: pointer;
+	background-color: #eee;
+	opacity: 0.8;
+}
+
+/* Positions "About" so that the javascript works well */
+.aboutMe{
+  padding-top:60px;
+  margin-top: -30px;
+  margin-left: 50px;
+  margin-bottom: 10px;
+  color: #a5f8d3;
+  /* Creates black outline */
+  text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+    font-size: 60px;
+    font-family: 'Bungee Shade', cursive;
+}
+/* Creates the Image in aboutMe Section */
+.AboutMe_Image {
+  display: block;
+  width: 20vw;
+  height: auto;
+  
+  min-width: 190px;
+  /* creates grascale effect */
+  filter: grayscale(100%);
+}
+
+.polaroid {
+  margin-left: 35px;
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+  float: left;
+  min-width: 190px;
+  width: 20vw;
+  border: 1px solid rgb(46, 46, 46);
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 35px;
+  margin-right:40px;
+  
+}
+.Polaroid_Container {
+  text-align: center;
+  padding: 20px 20px;
+}
+/* Creates invisable placeholder */
+#invisa-Text
+{
+  position: relative;
+  left:-2430px;
+}
+
+/* Text that appears on the poloroid */
+#AboutMe_Text {
+  color: black;
+  font-size: 25px;
+  margin-left: -8px;
+  font-family: 'Caveat', cursive;
+ 
+}
+
+/* container for the entire about me section */
+.AboutSection
+{
+  width: 100vw;
+  display: inline-flex;
+}
+/* Paragrpah in about me section */
+.AboutParagraph
+{
+  
+  text-indent: 40px;
+  font-size: 20px;
+  position: absolute;
+  right: 0px;
+  width: 68vw;
+  margin-left:60px;
+  margin-right: 10px;
+  /* float: right; */
+}
+/* Horizontal line */
+hr
+{
+  position: relative;
+  left: -10px;
+}
+#resumeFile
+{
+  
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  /* background-color: #73AD21; */
+}
+#pdf_Resume
+{
+  /* background-color: aqua; */
+  position: fixed;
+  margin: auto;
+  /* border: 3px solid #73AD21; */
+  padding: 10px;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  top:10px;
+  width: 70vw;
+  height: 95vh;
+  
+
+}
+#closeiframe
+{
+  width: 40px;
+  float: right;
+  height: 20px;
+  background-color: red;
+  border: 2px solid black;
+  background: rgb(255,36,36);
+  background: -moz-linear-gradient(90deg, rgba(255,36,36,1) 0%, rgba(255,201,201,1) 100%);
+  background: -webkit-linear-gradient(90deg, rgba(255,36,36,1) 0%, rgba(255,201,201,1) 100%);
+  background: linear-gradient(90deg, rgba(255,36,36,1) 0%, rgba(255,201,201,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff2424",endColorstr="#ffc9c9",GradientType=1);
+  
+}
+#closeiframe:hover
+{
+  /* transition-duration: 500ms; */
+  cursor: pointer;
+  background: rgb(255,201,201);
+  background: -moz-linear-gradient(90deg, rgba(255,201,201,1) 0%, rgba(255,36,36,1) 100%);
+  background: -webkit-linear-gradient(90deg, rgba(255,201,201,1) 0%, rgba(255,36,36,1) 100%);
+  background: linear-gradient(90deg, rgba(255,201,201,1) 0%, rgba(255,36,36,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffc9c9",endColorstr="#ff2424",GradientType=1);
+  
+}
+
+footer
+{
+  position: fixed;
+  bottom: 0px;
+}
+
+@media (max-height: 800px)
+{
+  footer{position: static;}
+}
+.Footer_Container
+{
+  background-color: #2c292f;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  padding: 50px 50px 60px 50px;
+  margin-top: 80px;
+
+}
+.Footer_Container .Footer_Left,
+.Footer_Container .Footer_Center,
+.Footer_Container .Footer_Right
+{
+  display: inline-block;
+  vertical-align: top;
+}
+.Footer_Container .Footer_Left
+{
+  width: 30%;
+}
+.Footer_Container h3
+{
+  color:#ffffff;
+  /* font:; */
+  margin: 0;
+}
+.Footer_Container .Footer_Left img{
+  width: 30%;
+}
+.Footer_Container h3 .Footer_Span
+{
+  color: #e0ac1c;
+}
+/* Footer Links */
+.Footer_Container .Footer_Links
+{
+  color: #ffffff;
+  margin: 20px 0 12px;
+}
+.Footer_Container .Footer_Links a
+{
+  display: inline-block;
+  line-height: 1.8;
+  
+  color:#e0ac1c;
+  text-decoration: none;
+  /* color: initial; */
+}
+.Footer_Container .copyRight
+{
+  color: #8f9296;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+/* Footer Center  */
+
+.Footer_Container .Footer_Center
+{
+  width: 35%;
+
+}
+.Footer_Container .Footer_Center i
+{
+  background-color: #33383b;
+  color:#ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin:10px 15px;
+  vertical-align: middle;
+}
+.Footer_Container .Footer_Center i .Fa_Envelope
+{
+  font-size: 17px;
+  line-height: 38px;
+}
+.Footer_Container .Footer_Center p span 
+{
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+}
+.Footer_Container .Footer_Center p a
+{
+  color: #e0ac1c;
+  text-decoration: none;
+
+}
+
+/* Footer Rught */
+.Footer_Container .Footer_Right
+{
+  width: 30%;
+
+}
+.Footer_Container .Footer_About
+{
+  line-height: 20px;
+  color: #92999f;
+  font-size: 13px;
+  margin:0;
+  font-weight: normal;
+}
+.Footer_Container .Footer_About span{
+  display: block;
+  color:#ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+
+}
+.Footer_Container .Footer_Icons
+{
+  margin-top: 25px;
+}
+
+.Footer_Container .Footer_Icons a
+{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+/* Hides the down arrow at certain point */
+@media screen and (max-width:1200px) 
+{
+  #down
+  {
+    visibility: hidden;
+  }
+}
+
+@media(max-width: 880px)
+{
+  .Footer_Container .Footer_Left
+  .Footer_Container .Footer_Right
+  .Footer_Container .Footer_Center
+  {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+
+  }
+  .Footer_Container .Footer_Center i 
+  {
+    margin-left: 0
+  }
+}
+
+/* makes the parralax image responsive */
+  @media screen and (max-width:500px) 
+  {
+     
+    header
+    {
+      background-image: url(photos/header_website_mobileV002.png);
+      background-position: top center;
+      background-size: cover;
+      background-color: #464646;
+    }
+    .background
+    {
+      height: 100vh;
+    }
+   
+  /* reshows the down arrow */
+  #down
+  {
+    margin: 0px;
+    top:85vh;
+    visibility: visible;
+    margin-bottom: initial;
+  }
+    nav{
+      margin-top: -30px;
+    }
+    
+  }
+/* Re fromats the about Me section for thinner screens */
+  @media screen and (max-width:925px) 
+  {
+  .aboutMe 
+    {
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
+    .polaroid
+    {
+      margin:0px auto 25px auto;
+      display: block;
+    }
+    .polaroid
+    {
+      float: none;
+      width: 50vw;
+    }
+    .AboutMe_Image
+    {
+      width: 50vw;
+    }
+    .AboutSection
+    {
+      display: inline;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    hr
+    {
+      visibility: hidden;
+    }
+    .AboutParagraph
+    {
+      text-indent: 50px;
+      text-align: start;
+      left: 5%;
+      width:90%;
+      margin: 0;
+      margin-top: 40px;
+      float:none;
+      position: relative;
+    }
+    
+  }
+/* removes parralaz effect for mobile devices to avoid complications */
+  @media only screen and (max-device-width: 1366px) {
+    header {
+      background-attachment: scroll;
+    }
+  }

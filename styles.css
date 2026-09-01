@@ -581,6 +581,29 @@ main section + section{ margin-top: 2.5rem; }
   font-style: italic;
   font-weight: 400;
 }
+/* Construction Callout Variant */
+.callout.callout-construction {
+  background: #FFF8E1; /* Soft high-viz amber background */
+  border-left: 6px solid #FF6D00; /* Safety Orange left accent */
+  position: relative;
+}
+
+.callout.callout-construction h3 {
+  color: #D84315; /* Rust/Dark Orange for high contrast readability */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Tool/Warning Icon Indicator */
+.callout.callout-construction h3::before {
+  content: "🚧"; /* Alternatives: "🛠️" or "⚒️" */
+  font-size: 1.1rem;
+}
+
+.callout.callout-construction p {
+  color: #4E342E;
+}
 
 /* Callout box for must-read course info */
 .callout{

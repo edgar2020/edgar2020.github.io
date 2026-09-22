@@ -1,3 +1,49 @@
+
+/* Keep the physical postcard animation from creating
+   horizontal page scrolling when the card travels off
+   the edge of the stack. */
+
+.postcard-wall-section {
+  overflow-x: clip;
+}
+
+/* Fallback for browsers that don't support overflow: clip */
+@supports not (overflow-x: clip) {
+  .postcard-wall-section {
+    overflow-x: hidden;
+  }
+}
+
+
+.postcard-message.ink-blue {
+  font-family: "Kalam", cursive;
+  color: #263c67;
+}
+
+.postcard-message.ink-black {
+  font-family: "Caveat", cursive;
+  color: #292722;
+}
+
+.postcard-message.ink-green {
+  font-family: "Kalam", cursive;
+  color: #385c48;
+}
+
+.postcard-message.ink-red {
+  font-family: "Permanent Marker", cursive;
+  color: #7a302d;
+}
+
+.postcard-message.ink-pencil {
+  font-family: "Caveat", cursive;
+  color: #55514b;
+  filter: contrast(0.85);
+}
+
+
+
+
 #headshot-image {
   border-radius: 50%;
   width: 100px; /* Adjust the size as needed */
@@ -720,90 +766,115 @@ main section + section{ margin-top: 2.5rem; }
   }
 }
 
+
 /* =========================================================
-   Postcard Wall/Table Display Layout
+   POSTCARD STACK
    ========================================================= */
 
 .postcard-wall-section {
-  width: 100%;
-  max-width: 1280px;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
-  box-sizing: border-box;
+  padding: 4rem 1rem 5rem;
 }
 
-/* Flex Container Spreads Cards Evenly Without Horizontal Overflow */
 .postcard-wall {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem 2.5rem;
-  padding: 1rem 0;
-}
-
-/* ---------------------------------------------------------
-   Card Container Query Context & Wall Scatter Angles
-   --------------------------------------------------------- */
-.postcard-container {
-  container-type: inline-size; /* Keeps cqw proportional inner scaling */
   position: relative;
-  perspective: 1200px;
-  box-sizing: border-box;
-  z-index: 1;
-  /* transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.4s ease; */
-}
-/* Container Uses JS Variables with Default Fallbacks */
-.postcard-container {
-  transform: rotate(var(--rot, 0deg)) translate(var(--x, 0px), var(--y, 0px));
-  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.35s ease;
+  width: min(100%, 900px);
+  min-height: 650px;
+  margin: 0 auto;
+
+  display: grid;
+  place-items: center;
 }
 
-/* Reset scale & rotation on hover/focus */
-.postcard-container:hover,
-.postcard-container:focus-within,
-.postcard-container:has(.postcard-toggle:checked) {
-  transform: scale(1.05) rotate(0deg) translate(0, 0);
-  z-index: 10;
-}
-/* Standard Horizontal Card Size (6x4 Ratio) */
+/* Each postcard occupies the same physical stack position */
 .postcard-container {
-  flex: 1 1 380px;
-  max-width: 440px;
+  grid-area: 1 / 1;
+  position: relative;
+
+  perspective: 1200px;
+
+  transform: translate(var(--stack-x), var(--stack-y));
+  transition: transform 650ms cubic-bezier(.22, .61, .36, 1);
+
+  transition:
+    transform 280ms ease;
+
+  will-change: transform;
+}
+
+/* Horizontal postcards */
+.postcard-container.horizontal {
+  width: min(72vw, 440px);
   aspect-ratio: 6 / 4;
 }
 
-/* Vertical Card Modifier Size (4x6 Ratio) */
-.postcard-container.is-vertical {
-  flex: 1 1 260px;
-  max-width: 300px;
+/* Vertical postcards */
+.postcard-container.vertical {
+  width: min(52vw, 300px);
   aspect-ratio: 4 / 6;
 }
 
-/* Subtle Natural Tilts to Simulate a Wall/Table Layout */
-/* .postcard-container:nth-child(4n+1) { transform: rotate(-2deg); }
-.postcard-container:nth-child(4n+2) { transform: rotate(1.8deg); }
-.postcard-container:nth-child(4n+3) { transform: rotate(-1.2deg); }
-.postcard-container:nth-child(4n+4) { transform: rotate(2.2deg); } */
-
-/* Bring Active/Hovered Card Straight and Forward */
-.postcard-container:hover,
-.postcard-container:focus-within,
-.postcard-container:has(.postcard-toggle:checked) {
-  transform: scale(1.03) rotate(0deg);
-  z-index: 10;
+/* Physical stack offsets */
+.postcard-container:nth-child(1) {
+  --stack-x: -22px;
+  --stack-y: -26px;
+  z-index: 1;
 }
 
-/* Static Non-Flipping Frame Lock */
+.postcard-container:nth-child(2) {
+  --stack-x: 20px;
+  --stack-y: -17px;
+  z-index: 2;
+}
+
+.postcard-container:nth-child(3) {
+  --stack-x: -12px;
+  --stack-y: 13px;
+  z-index: 3;
+}
+
+.postcard-container:nth-child(4) {
+  --stack-x: 27px;
+  --stack-y: 20px;
+  z-index: 4;
+}
+
+.postcard-container:nth-child(5) {
+  --stack-x: 0;
+  --stack-y: 4px;
+  z-index: 5;
+}
+
+/* Active postcard comes to the top */
+.postcard-container.is-active {
+  z-index: 100 !important;
+}
+
+
+/* ---------------------------------------------------------
+   INVISIBLE STABILIZING FRAME
+   --------------------------------------------------------- */
+
+/*
+   This frame no longer creates the white background.
+
+   It exists only to give the card a stable outer footprint
+   and prevent the stack from shifting during the flip.
+*/
 .postcard-static-frame {
   position: absolute;
-  inset: 0;
-  background: var(--white);
-  border-radius: 0.8cqw;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  inset: -8px;
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
   pointer-events: none;
-  z-index: 0;
 }
+
+
+/* ---------------------------------------------------------
+   FLIPPING CARD
+   --------------------------------------------------------- */
 
 .postcard-toggle {
   position: absolute;
@@ -811,293 +882,454 @@ main section + section{ margin-top: 2.5rem; }
   pointer-events: none;
 }
 
-/* 3D Flip Canvas */
 .postcard-inner {
+  position: relative;
+
   display: block;
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
-  text-align: left;
-  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-  transform-style: preserve-3d;
+
   cursor: pointer;
-  border-radius: 0.8cqw;
-  contain: layout paint;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 700ms cubic-bezier(.22, .61, .36, 1);
 }
 
-.postcard-inner:focus-visible {
-  outline: 0.6cqw solid var(--maroon);
-  outline-offset: 0.8cqw;
-}
-
+/* Flip the actual postcard */
 .postcard-toggle:checked + .postcard-inner {
   transform: rotateY(180deg);
 }
 
-/* Card Faces */
-.postcard-front, 
+
+/* ---------------------------------------------------------
+   BOTH VISIBLE CARD FACES
+   --------------------------------------------------------- */
+
+.postcard-front,
 .postcard-back {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border: 1.6cqw solid var(--white);
-  border-radius: 0.8cqw;
-  box-sizing: border-box;
+
   overflow: hidden;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  /*
+     The border belongs to the faces themselves, so it
+     physically rotates with the postcard.
+  */
+  border: 8px solid #f7f3eb;
+  border-radius: 2px;
+
+  background: #f7f1e7;
+
+  box-shadow:
+    0 10px 22px rgba(39, 34, 27, 0.18),
+    0 2px 5px rgba(39, 34, 27, 0.12);
+
+  box-sizing: border-box;
 }
+
+/* Back starts rotated so it becomes visible after the flip */
+.postcard-back {
+  transform: rotateY(180deg);
+  padding: 1.1rem;
+}
+
 
 /* ---------------------------------------------------------
-   Front Face & Breakaway Hover
+   FRONT IMAGE
    --------------------------------------------------------- */
+
 .postcard-front {
-  background-color: var(--maroon-dark);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: relative;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  box-sizing:border-box;
 }
 
+/*
+   Both images occupy exactly the same physical area.
+*/
 .postcard-img-original,
 .postcard-img-styled {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center;
-  transition: all 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  height: 100%;
+  box-sizing:border-box;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition:
+    opacity 700ms ease,
+    filter 700ms ease;
+
 }
 
+/*
+   Original photograph is underneath.
+*/
 .postcard-img-original {
+  opacity: 1;
+  filter: none;
   z-index: 1;
-  transform: scale(1.08);
-  filter: brightness(0.9);
 }
 
+/*
+   Styled version sits on top.
+*/
 .postcard-img-styled {
+  opacity: 0.78;
   z-index: 2;
-  filter: contrast(1.05) sepia(0.12);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  /* mix-blend-mode: multiply; */
+  /*
+     Keep the styled image looking like the printed/
+     illustrated version until the user hovers.
+  */
+  filter:
+    saturate(0.82)
+    contrast(0.94);
 }
 
-.postcard-front::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  background: linear-gradient(to top, rgba(35, 35, 38, 0.85) 0%, rgba(35, 35, 38, 0.15) 60%);
-  pointer-events: none;
-}
 
+/* ---------------------------------------------------------
+   HOVER: REVEAL ORIGINAL PHOTOGRAPH
+   --------------------------------------------------------- */
+
+/*
+   Hovering anywhere over the postcard fades the styled
+   layer away, revealing the original image underneath.
+*/
 .postcard-inner:hover .postcard-img-styled {
-  clip-path: polygon(0 0, 100% 0, 0 0, 0 0);
   opacity: 0;
 }
 
+/*
+   Slightly restore the original image as it is revealed.
+*/
 .postcard-inner:hover .postcard-img-original {
-  transform: scale(1);
-  filter: brightness(1);
+  filter: none;
 }
+
+
+/* ---------------------------------------------------------
+   FLIP HINT
+   --------------------------------------------------------- */
 
 .postcard-flip-hint {
   position: absolute;
-  top: 2.5cqw;
-  right: 2.5cqw;
-  z-index: 4;
-  background: rgba(35, 35, 38, 0.65);
-  color: var(--white);
-  font-family: var(--font-mono);
-  font-size: 1.8cqw;
-  letter-spacing: 0.05em;
-  padding: 0.6cqw 1.2cqw;
-  border-radius: 0.4cqw;
-  text-transform: uppercase;
-}
+  right: 0.75rem;
+  bottom: 0.65rem;
 
-.postcard-front-content {
-  position: relative;
-  z-index: 4;
-  padding: 3cqw;
-}
+  z-index: 5;
 
-.postcard-title {
-  font-family: var(--font-display);
-  font-size: 4.2cqw;
-  color: var(--white);
-  margin: 0;
+  padding: 0.3rem 0.5rem;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.65rem;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 1.1;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  background: rgba(30, 27, 22, 0.48);
+  border-radius: 2px;
+
+  transition: opacity 250ms ease;
 }
 
-.postcard-front .postcard-subtitle {
-  font-family: var(--font-mono);
-  font-size: 2.1cqw;
-  color: var(--brass);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.postcard-inner:hover .postcard-flip-hint {
+  opacity: 0;
 }
+
 
 /* ---------------------------------------------------------
-   Back Face Fixed Layouts (Scaled via Container Queries)
+   AGED / DAMAGED EDGES
    --------------------------------------------------------- */
-.postcard-back {
-  background: #FBF9F5;
-  color: var(--ink);
-  transform: rotateY(180deg);
-  padding: 2.5cqw;
-  display: flex;
-  flex-direction: column;
+
+.postcard-front::after,
+.postcard-back::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 10;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(93, 75, 53, 0.18),
+    inset 0 0 18px rgba(83, 64, 44, 0.12);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(87, 64, 40, 0.08),
+      transparent 5%,
+      transparent 95%,
+      rgba(87, 64, 40, 0.08)
+    ),
+    linear-gradient(
+      0deg,
+      rgba(87, 64, 40, 0.07),
+      transparent 5%,
+      transparent 95%,
+      rgba(87, 64, 40, 0.07)
+    );
 }
 
+
+/* ---------------------------------------------------------
+   POSTCARD BACK
+   --------------------------------------------------------- */
+
 .postcard-back-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-bottom: 0.2cqw dashed var(--grey-300);
-  padding-bottom: 1.2cqw;
-  margin-bottom: 1.8cqw;
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: start;
+  gap: 0.75rem;
 }
 
 .postcard-heading {
-  font-family: var(--font-display);
-  font-size: 2.8cqw;
-  font-weight: 600;
-  color: var(--maroon);
-  margin: 0 0 0.3cqw;
-  text-transform: uppercase;
+  margin: 0;
+
+  font-family: "Fraunces", serif;
 }
 
-.postcard-back .postcard-subtitle {
-  font-family: var(--font-mono);
-  font-size: 1.9cqw;
-  color: var(--grey-500);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.postcard-subtitle {
+  margin: 0.2rem 0 0;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.8rem;
 }
 
 .postcard-stamp {
-  width: 7.5cqw;
-  height: 9.5cqw;
-  border: 0.4cqw dashed var(--grey-300);
-  background: var(--grey-100);
+  position: relative;
+
+  width: 58px;
+  height: 68px;
+
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 1.5cqw;
-  color: var(--grey-500);
+
+  border: 1px dotted rgba(50, 45, 38, 0.65);
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.48rem;
+  line-height: 1.1;
+
   text-align: center;
-  line-height: 1.2;
-  text-transform: uppercase;
-  flex-shrink: 0;
+
+  transform: rotate(1.5deg);
 }
 
-/* Horizontal Back Face: Fixed 2-Column Split */
+.postcard-stamp::before {
+  content: "★";
+
+  font-size: 1.35rem;
+  line-height: 1;
+  margin-bottom: 0.15rem;
+}
+
+.postcard-postmark {
+  position: relative;
+
+  width: 58px;
+  height: 58px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(105, 45, 40, 0.5);
+  border-radius: 50%;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.45rem;
+  text-align: center;
+
+  color: rgba(105, 45, 40, 0.72);
+
+  transform: rotate(-7deg);
+}
+
+.postcard-postmark::after {
+  content: "";
+
+  position: absolute;
+  left: -18px;
+  right: -18px;
+  top: 50%;
+
+  height: 1px;
+
+  background: rgba(105, 45, 40, 0.45);
+
+  box-shadow:
+    0 -4px 0 rgba(105, 45, 40, 0.3),
+    0 4px 0 rgba(105, 45, 40, 0.3);
+}
+
+
+/* ---------------------------------------------------------
+   BACK BODY
+   --------------------------------------------------------- */
+
 .postcard-back-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2.5cqw;
-  flex: 1 1 auto;
-  position: relative;
-  min-height: 0;
-}
+  gap: 1.25rem;
 
-.postcard-back-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  border-left: 0.2cqw solid var(--grey-300);
+  height: calc(100% - 85px);
+
+  margin-top: 1rem;
 }
 
 .postcard-message {
-  font-family: var(--font-body);
-  font-size: 2.3cqw;
-  line-height: 1.4;
-  color: var(--grey-700);
-  padding-right: 1cqw;
-  overflow-y: auto;
-}
-
-.postcard-message p {
   margin: 0;
+
+  line-height: 1.35;
 }
 
 .postcard-address {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 1.2cqw;
-  padding-left: 1cqw;
-  padding-bottom: 0.8cqw;
+  padding-left: 1.1rem;
+
+  border-left: 1px solid rgba(60, 53, 43, 0.3);
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.65rem;
+  line-height: 1.6;
 }
 
-.address-line {
-  border-bottom: 0.2cqw solid var(--grey-300);
-  font-family: var(--font-mono);
-  font-size: 2.1cqw;
-  color: var(--grey-700);
-  padding-bottom: 0.4cqw;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 /* ---------------------------------------------------------
-   Vertical Postcard Back Face
+   HANDWRITING / INK VARIATIONS
    --------------------------------------------------------- */
-.postcard-container.is-vertical .postcard-back-body {
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
-  gap: 2cqw;
+
+.postcard-message.ink-blue {
+  font-family: "Kalam", cursive;
+  color: #263c67;
 }
 
-.postcard-container.is-vertical .postcard-back-body::before {
-  display: none;
+.postcard-message.ink-black {
+  font-family: "Caveat", cursive;
+  color: #292722;
 }
 
-.postcard-container.is-vertical .postcard-message {
-  padding-right: 0;
-  border-bottom: 0.2cqw dashed var(--grey-300);
-  padding-bottom: 2cqw;
-  font-size: 3.2cqw;
+.postcard-message.ink-green {
+  font-family: "Kalam", cursive;
+  color: #385c48;
 }
 
-.postcard-container.is-vertical .postcard-address {
-  padding-left: 0;
+.postcard-message.ink-red {
+  font-family: "Permanent Marker", cursive;
+  color: #7a302d;
 }
 
-.postcard-container.is-vertical .address-line {
-  font-size: 3cqw;
+.postcard-message.ink-pencil {
+  font-family: "Caveat", cursive;
+  color: #55514b;
+  filter: contrast(0.85);
 }
 
-.postcard-container.is-vertical .postcard-heading {
-  font-size: 3.8cqw;
+
+/* ---------------------------------------------------------
+   STACK SHADOW
+   --------------------------------------------------------- */
+
+.postcard-container::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: -16px;
+  height: 25px;
+  background: rgba(35, 29, 22, 0.18);
+  filter: blur(12px);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
 }
 
-.postcard-container.is-vertical .postcard-back .postcard-subtitle {
-  font-size: 2.6cqw;
+
+/* ---------------------------------------------------------
+   STACK CONTROLS
+   --------------------------------------------------------- */
+
+.postcard-stack-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  margin-top: 1.5rem;
 }
 
-.postcard-container.is-vertical .postcard-front .postcard-subtitle {
-  font-size: 2.8cqw;
+.postcard-next {
+  padding: 0.55rem 0.9rem;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+
+  background: transparent;
+
+  border: 1px solid currentColor;
+  border-radius: 2px;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease;
 }
 
-.postcard-container.is-vertical .postcard-title {
-  font-size: 5.5cqw;
+.postcard-next:hover {
+  background: currentColor;
+  color: #f7f3eb;
 }
 
-.postcard-container.is-vertical .postcard-flip-hint {
-  font-size: 2.4cqw;
+.postcard-counter {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  opacity: 0.65;
 }
 
-.postcard-container.is-vertical .postcard-stamp {
-  width: 10cqw;
-  height: 12cqw;
-  font-size: 2cqw;
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .postcard-wall {
+    min-height: 560px;
+  }
+
+  .postcard-container.horizontal {
+    width: min(82vw, 390px);
+  }
+
+  .postcard-container.vertical {
+    width: min(62vw, 270px);
+  }
+
+  .postcard-back {
+    padding: 0.8rem;
+  }
+
+  .postcard-back-body {
+    gap: 0.7rem;
+  }
+
+  .postcard-address {
+    padding-left: 0.7rem;
+  }
 }

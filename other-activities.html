@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Kalam:wght@300;400&family=Permanent+Marker&family=Rock+Salt&display=swap" rel="stylesheet">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -46,15 +47,15 @@
 <section class="postcard-wall-section">
   <div class="postcard-wall">
 
-    <!-- Postcard 1 (Horizontal) -->
-    <div class="postcard-container is-vertical" id="card-1">
+    <!-- Postcard 1 (Vertical) -->
+    <div class="postcard-container vertical" id="card-1">
       <div class="postcard-static-frame" aria-hidden="true"></div>
       
       <input type="checkbox" id="postcard-1" class="postcard-toggle" aria-label="Flip postcard 1">
       <label for="postcard-1" class="postcard-inner" tabindex="0">
         <div class="postcard-front">
-          <div class="postcard-img-original" style="background-image: url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1000&q=80');"></div>
-          <div class="postcard-img-styled" style="background-image: url('images/Crate-Lake-post.jpg');"></div>
+          <div class="postcard-img-original" style="background-image: url('images/climbing.jpg');"></div>
+          <div class="postcard-img-styled" style="background-image: url('images/climbing_styled.png');"></div>
           <span class="postcard-flip-hint">Click to flip ↺</span>
           <!-- <div class="postcard-front-content">
             <span class="postcard-subtitle">California • USA</span>
@@ -68,18 +69,21 @@
               <h4 class="postcard-heading">Postcad Collecting</h4>
               <span class="postcard-subtitle">Activity No. 01</span>
             </div>
-            <div class="postcard-stamp">Place<br>Stamp</div>
+              <div class="postcard-stamp">
+                POSTAGE
+              </div>
+
+              <div class="postcard-postmark">
+                REDLANDS<br>
+                CA<br>
+                2026
+              </div>
           </div>
           <div class="postcard-back-body">
-            <div class="postcard-message">
+            <div class="postcard-message rock-salt-regular" >
               <p>One of my favorite things to do whenever I visit a new place is to collect a postcard as a souveneir. On the back I like to write 
-                when I was there, what I did, and who I went with. Often getting the people I went with to sign the card as well. The collection has since 
+                when I was there, what I did, and get signatures of the people I went with. The collection has since 
                 expanded to include postcards from friends and family of places they've visited. Hence you might notice a postcard theme on this page. 
-              </p>
-              <p>The tradition actually started when I studied abroad in college. I was studying in France, and I asked some classmates (whom I had only recently met) 
-                if I could join them on a weekend trip to Amsterdam that they had already planned. They graceouly said yes and as a thank you I sent them thank you 
-                letters written on the back of postcards. They even sent me a responses on the back of the own postcards as well. Since then I'm always buying 
-                postcards for myself, for those who I travel with, and for those who helped me plan the trip.
               </p>
             </div>
             <div class="postcard-address">
@@ -91,111 +95,41 @@
         </div>
       </label>
     </div>
-    <!-- Postcard 2 (Vertical) -->
-    <div class="postcard-container is-vertical" id="card-2">
+
+    <!-- Postcard 2 (Horizontal) -->
+    <div class="postcard-container horizontal" id="card-2">
       <div class="postcard-static-frame" aria-hidden="true"></div>
       
       <input type="checkbox" id="postcard-2" class="postcard-toggle" aria-label="Flip postcard 2">
       <label for="postcard-2" class="postcard-inner" tabindex="0">
         <div class="postcard-front">
-          <div class="postcard-img-original" style="background-image: url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1000&q=80');"></div>
-          <div class="postcard-img-styled" style="background-image: url('images/Crate-Lake-post.jpg');"></div>
-          <span class="postcard-flip-hint">Click to flip ↺</span>
-          <!-- <div class="postcard-front-content">
-            <span class="postcard-subtitle">California • USA</span>
-            <h3 class="postcard-title">Yosemite Trails</h3>
-          </div> -->
-        </div>
-
-        <div class="postcard-back">
-          <div class="postcard-back-header">
-            <div>
-              <h4 class="postcard-heading">Postcad Collecting</h4>
-              <span class="postcard-subtitle">Activity No. 2</span>
-            </div>
-            <div class="postcard-stamp">Place<br>Stamp</div>
-          </div>
-          <div class="postcard-back-body">
-            <div class="postcard-message">
-              <p>I love hiking and being outdoors! Part of that is because I love visiting National Parks! </p>
-              <p><strong>Furthest Park:</strong>Shenandoah NP</p>
-              <p><strong>Favorite Park:</strong>Crater Lake NP</p>
-            </div>
-            <div class="postcard-address">
-              <div class="address-line"> - Edgar Melendrez</div>
-              <div class="address-line">Data Science Program</div>
-              <div class="address-line">Univ. of Redlands</div>
-            </div>
-          </div>
-        </div>
-      </label>
-    </div>
-
-    <!-- Postcard 3 (Vertical) -->
-    <div class="postcard-container is-vertical" id="card-3">
-      <div class="postcard-static-frame" aria-hidden="true"></div>
-      
-      <input type="checkbox" id="postcard-3" class="postcard-toggle" aria-label="Flip postcard 3">
-      <label for="postcard-3" class="postcard-inner" tabindex="0">
-        <div class="postcard-front">
-          <div class="postcard-img-original" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1000&q=80');"></div>
-          <div class="postcard-img-styled" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80');"></div>
-          <span class="postcard-flip-hint">Click to flip ↺</span>
-          <div class="postcard-front-content">
-            <span class="postcard-subtitle">Arizona • USA</span>
-            <h3 class="postcard-title">Grand Canyon</h3>
-          </div>
-        </div>
-
-        <div class="postcard-back">
-          <div class="postcard-back-header">
-            <div>
-              <h4 class="postcard-heading">Landscape Photography</h4>
-              <span class="postcard-subtitle">Activity No. 02</span>
-            </div>
-            <div class="postcard-stamp">Place<br>Stamp</div>
-          </div>
-          <div class="postcard-back-body">
-            <div class="postcard-message">
-              <p>Captured sunrise over South Rim during golden hour.</p>
-            </div>
-            <div class="postcard-address">
-              <div class="address-line">Edgar Melendrez</div>
-              <div class="address-line">Data Science Program</div>
-              <div class="address-line">Univ. of Redlands</div>
-            </div>
-          </div>
-        </div>
-      </label>
-    </div>
-
-    <!-- Postcard 4 (Horizontal) -->
-    <div class="postcard-container" id="card-4">
-      <div class="postcard-static-frame" aria-hidden="true"></div>
-      
-      <input type="checkbox" id="postcard-4" class="postcard-toggle" aria-label="Flip postcard 4">
-      <label for="postcard-4" class="postcard-inner" tabindex="0">
-        <div class="postcard-front">
           <div class="postcard-img-original" style="background-image: url('images/skdiving.jpg');"></div>
           <div class="postcard-img-styled" style="background-image: url('images/skydive_styled.png');"></div>
           <span class="postcard-flip-hint">Click to flip ↺</span>
-          <div class="postcard-front-content">
-            <span class="postcard-subtitle">Perris, CA</span>
-            <h3 class="postcard-title">Perris Skydiving</h3>
-          </div>
         </div>
 
         <div class="postcard-back">
           <div class="postcard-back-header">
             <div>
-              <h4 class="postcard-heading">River Trekking</h4>
-              <span class="postcard-subtitle">Activity No. 03</span>
+              <h4 class="postcard-heading">Postcard Collecting</h4>
+              <span class="postcard-subtitle">Activity No. 02</span>
             </div>
-            <div class="postcard-stamp">Place<br>Stamp</div>
+              <div class="postcard-stamp">
+                POSTAGE
+              </div>
+
+              <div class="postcard-postmark">
+                REDLANDS<br>
+                CA<br>
+                2026
+              </div>
           </div>
           <div class="postcard-back-body">
-            <div class="postcard-message">
-              <p>Waded upstream through the Virgin River gorge surrounded by thousand-foot canyon walls.</p>
+            <div class="postcard-message rock-salt-regular" >
+              <p>One of my favorite things to do whenever I visit a new place is to collect a postcard as a souveneir. On the back I like to write 
+                when I was there, what I did, and get signatures of the people I went with. The collection has since 
+                expanded to include postcards from friends and family of places they've visited. Hence you might notice a postcard theme on this page. 
+              </p>
             </div>
             <div class="postcard-address">
               <div class="address-line">Edgar Melendrez</div>
@@ -206,44 +140,28 @@
         </div>
       </label>
     </div>
+    
 
-    <!-- Postcard 5 (Vertical) -->
-    <div class="postcard-container is-vertical" id="card-5">
-      <div class="postcard-static-frame" aria-hidden="true"></div>
-      
-      <input type="checkbox" id="postcard-5" class="postcard-toggle" aria-label="Flip postcard 5">
-      <label for="postcard-5" class="postcard-inner" tabindex="0">
-        <div class="postcard-front">
-          <div class="postcard-img-original" style="background-image: url('images/climbing.jpg');"></div>
-          <div class="postcard-img-styled" style="background-image: url('images/climbing_styled.png');"></div>
-          <span class="postcard-flip-hint">Click to flip ↺</span>
-          <div class="postcard-front-content">
-            <span class="postcard-subtitle">Las Vegas • Nv</span>
-            <h3 class="postcard-title">Red Rock Canyon </h3>
-          </div>
-        </div>
+    
+    
+  </div>
+  <div class="postcard-stack-controls">
+      <button
+          type="button"
+          class="postcard-next"
+          id="next-postcard">
+          Next postcard
+      </button>
 
-        <div class="postcard-back">
-          <div class="postcard-back-header">
-            <div>
-              <h4 class="postcard-heading">Coastal Biking</h4>
-              <span class="postcard-subtitle">Activity No. 04</span>
-            </div>
-            <div class="postcard-stamp">Place<br>Stamp</div>
-          </div>
-          <div class="postcard-back-body">
-            <div class="postcard-message">
-              <p>Cycled historic carriage roads and watched Atlantic waves hit Ocean Path.</p>
-            </div>
-            <div class="postcard-address">
-              <div class="address-line">Edgar Melendrez</div>
-              <div class="address-line">Data Science Program</div>
-              <div class="address-line">Univ. of Redlands</div>
-            </div>
-          </div>
-        </div>
-      </label>
-    </div>
+      <span
+          class="postcard-counter"
+          id="postcard-counter"
+          aria-live="polite">
+          1 / 5
+      </span>
+
+
+    
 
   </div>
 </section>
@@ -259,34 +177,406 @@
   </div>
 </footer>
 
+
+
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const cards = document.querySelectorAll('.postcard-container');
+  
+/* =========================================================
+   POSTCARD STACK
+   ========================================================= */
 
-      cards.forEach((card) => {
-        // Random rotation between -5.0deg and +5.0deg
-        const rot = (Math.random() * 5 - 2.5).toFixed(1);
-        
-        // Random offsets between -6px and +6px
-        const x = (Math.random() * 12 - 6).toFixed(1);
-        const y = (Math.random() * 12 - 6).toFixed(1);
+const cards = Array.from(
+  document.querySelectorAll(".postcard-container")
+);
 
-        card.style.setProperty('--rot', `${rot}deg`);
-        card.style.setProperty('--x', `${x}px`);
-        card.style.setProperty('--y', `${y}px`);
+const nextButton = document.querySelector("#next-postcard");
+const counter = document.querySelector("#postcard-counter");
 
-        // Manage layer depth when flipping cards
-        const toggle = card.querySelector('.postcard-toggle');
-        if (toggle) {
-          toggle.addEventListener('change', () => {
-            cards.forEach(c => c.style.zIndex = '1');
-            if (toggle.checked) {
-              card.style.zIndex = '20';
-            }
-          });
-        }
-      });
+let activeIndex = 0;
+let isAnimating = false;
+
+
+/* ---------------------------------------------------------
+   STACK POSITIONS
+   --------------------------------------------------------- */
+
+const stackPositions = [
+  { x: -22, y: -26 },
+  { x: 20,  y: -17 },
+  { x: -12, y: 13 },
+  { x: 27,  y: 20 },
+  { x: 0,   y: 4 }
+];
+
+
+/* ---------------------------------------------------------
+   ANIMATION SETTINGS
+   --------------------------------------------------------- */
+
+const ARC_DURATION = 520;
+const RETURN_DURATION = 560;
+
+const ARC_X = 440;
+const ARC_Y = 90;
+
+
+/* ---------------------------------------------------------
+   COUNTER
+   --------------------------------------------------------- */
+
+function updateCounter() {
+  if (!counter) return;
+
+  counter.textContent =
+    `${activeIndex + 1} / ${cards.length}`;
+}
+
+
+/* ---------------------------------------------------------
+   GET STACK POSITION
+   --------------------------------------------------------- */
+
+function getStackPosition(position) {
+  return stackPositions[
+    Math.min(position, stackPositions.length - 1)
+  ];
+}
+
+
+/* ---------------------------------------------------------
+   POSITION ALL CARDS
+   --------------------------------------------------------- */
+
+function positionCards(animate = true) {
+
+  cards.forEach((card, index) => {
+
+    const position =
+      (index - activeIndex + cards.length) % cards.length;
+
+    const stackPosition =
+      getStackPosition(position);
+
+    card.style.transition = animate
+      ? `transform ${RETURN_DURATION}ms cubic-bezier(.22,.61,.36,1)`
+      : "none";
+
+    card.style.transform =
+      `translate(${stackPosition.x}px, ${stackPosition.y}px)`;
+
+    if (position === 0) {
+      card.classList.add("is-active");
+      card.style.zIndex = 100;
+    } else {
+      card.classList.remove("is-active");
+
+      /*
+         Cards closer to the front have higher z-index.
+      */
+      card.style.zIndex =
+        cards.length - position;
+    }
+  });
+
+  updateCounter();
+}
+
+
+/* ---------------------------------------------------------
+   INITIALIZE
+   --------------------------------------------------------- */
+
+positionCards(false);
+
+
+/* ---------------------------------------------------------
+   ANIMATE CARD OUT OF THE STACK
+   --------------------------------------------------------- */
+
+function animateCardOut(card) {
+
+  return new Promise((resolve) => {
+
+    /*
+       The card temporarily comes above the entire stack.
+    */
+    card.style.zIndex = 500;
+
+    /*
+       Start from wherever the card currently is.
+       This is important when clicking a background card.
+    */
+    const computedTransform =
+      getComputedStyle(card).transform;
+
+    /*
+       Force the browser to recognize the current position
+       before starting the outward movement.
+    */
+    card.style.transition = "none";
+
+    if (computedTransform !== "none") {
+      card.style.transform = computedTransform;
+    }
+
+    void card.offsetWidth;
+
+
+    /* -----------------------------------------------------
+       OUTWARD ARC
+       ----------------------------------------------------- */
+
+    card.style.transition =
+      `transform ${ARC_DURATION}ms cubic-bezier(.22,.61,.36,1)`;
+
+    card.style.transform =
+      `translate(${ARC_X}px, ${ARC_Y}px)
+       rotate(8deg)
+       scale(1.015)`;
+
+
+    setTimeout(resolve, ARC_DURATION);
+  });
+}
+
+
+/* ---------------------------------------------------------
+   BRING A CARD TO THE FRONT
+   --------------------------------------------------------- */
+
+async function bringCardToFront(targetIndex) {
+
+  if (isAnimating) return;
+
+  if (
+    targetIndex < 0 ||
+    targetIndex >= cards.length
+  ) {
+    return;
+  }
+
+  /*
+     Clicking the already-active card should not cycle the
+     stack. Its normal label/checkbox behavior can handle
+     the postcard flip.
+  */
+  if (targetIndex === activeIndex) return;
+
+  isAnimating = true;
+
+  const targetCard = cards[targetIndex];
+
+
+  /* -------------------------------------------------------
+     1. SEND SELECTED CARD OUTWARD
+     ------------------------------------------------------- */
+
+  await animateCardOut(targetCard);
+
+
+  /* -------------------------------------------------------
+     2. MAKE SELECTED CARD THE NEW ACTIVE CARD
+     ------------------------------------------------------- */
+
+  activeIndex = targetIndex;
+
+
+  /*
+     Put the selected card at the far side of the stack
+     while it is still displaced to the right.
+  */
+  const bottomPosition =
+    getStackPosition(
+      Math.min(cards.length - 1, stackPositions.length - 1)
+    );
+
+  /*
+     The card should now travel gracefully back toward the
+     stack rather than snapping underneath it.
+  */
+  targetCard.style.transition =
+    `transform ${RETURN_DURATION}ms cubic-bezier(.22,.61,.36,1)`;
+
+  /*
+     First bring the rest of the stack into their new
+     positions. The selected card remains above them.
+  */
+  cards.forEach((card, index) => {
+
+    if (card === targetCard) return;
+
+    const position =
+      (index - activeIndex + cards.length) % cards.length;
+
+    const stackPosition =
+      getStackPosition(position);
+
+    card.style.transition =
+      `transform ${RETURN_DURATION}ms cubic-bezier(.22,.61,.36,1)`;
+
+    card.style.transform =
+      `translate(${stackPosition.x}px, ${stackPosition.y}px)`;
+
+    card.classList.toggle(
+      "is-active",
+      position === 0
+    );
+
+    card.style.zIndex =
+      position === 0
+        ? 100
+        : cards.length - position;
+  });
+
+
+  /*
+     The selected card travels from the right-hand arc
+     back into the FRONT of the stack.
+
+     This is deliberately the same general speed as the
+     outward movement, rather than instantly appearing
+     underneath the cards.
+  */
+  requestAnimationFrame(() => {
+
+    targetCard.style.transform =
+      `translate(${stackPositions[0].x}px,
+                 ${stackPositions[0].y}px)
+       rotate(0deg)
+       scale(1)`;
+  });
+
+
+  updateCounter();
+
+
+  /* -------------------------------------------------------
+     3. WAIT FOR THE RETURN MOTION
+     ------------------------------------------------------- */
+
+  setTimeout(() => {
+
+    targetCard.style.zIndex = 100;
+    targetCard.classList.add("is-active");
+
+    /*
+       Clean up inline transitions so future animations
+       can control them.
+    */
+    cards.forEach((card) => {
+      card.style.transition = "";
     });
-  </script>
+
+    isAnimating = false;
+
+  }, RETURN_DURATION + 40);
+}
+
+
+/* ---------------------------------------------------------
+   NEXT POSTCARD
+   --------------------------------------------------------- */
+
+function nextPostcard() {
+
+  if (isAnimating || cards.length < 2) {
+    return;
+  }
+
+  const nextIndex =
+    (activeIndex + 1) % cards.length;
+
+  bringCardToFront(nextIndex);
+}
+
+
+/* ---------------------------------------------------------
+   NEXT BUTTON
+   --------------------------------------------------------- */
+
+if (nextButton) {
+  nextButton.addEventListener(
+    "click",
+    nextPostcard
+  );
+}
+
+
+/* ---------------------------------------------------------
+   CLICKING BACKGROUND POSTCARDS
+   --------------------------------------------------------- */
+
+/*
+   Clicking a background postcard brings THAT postcard to
+   the front using the same physical animation as the
+   Next button.
+
+   The active postcard is ignored here so clicking its
+   label still performs the normal front/back flip.
+ */
+cards.forEach((card, index) => {
+
+  card.addEventListener("click", (event) => {
+
+    /*
+       If this is already the active card, don't interfere
+       with its checkbox/label flip interaction.
+    */
+    if (index === activeIndex) {
+      return;
+    }
+
+    /*
+       Background card was clicked.
+       Stop the normal label click from toggling its flip
+       checkbox, because this click is being used to bring
+       the card forward.
+    */
+    event.preventDefault();
+    event.stopPropagation();
+
+    bringCardToFront(index);
+  });
+});
+
+
+/* ---------------------------------------------------------
+   KEYBOARD NAVIGATION
+   --------------------------------------------------------- */
+
+document.addEventListener("keydown", (event) => {
+
+  const activeElement = document.activeElement;
+
+  /*
+     Don't hijack arrow keys while typing.
+  */
+  if (
+    activeElement &&
+    (
+      activeElement.tagName === "INPUT" ||
+      activeElement.tagName === "TEXTAREA" ||
+      activeElement.isContentEditable
+    )
+  ) {
+    return;
+  }
+
+
+  if (
+    event.key === "ArrowRight" ||
+    event.key === "ArrowDown"
+  ) {
+    event.preventDefault();
+
+    nextPostcard();
+  }
+
+});
+
+</script>
+
+
+
 </body>
 </html>

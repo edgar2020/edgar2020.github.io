@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edgar Melendrez — Data Science, University of Reading</title>
+<meta name="description" content="Personal site of Edgar Melendrez — schedule, teaching, Data Science at UoR, and other activities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav-bar" aria-label="Primary">
+    <!-- <a class="brand" href="index.html">
+      <span class="crest" aria-hidden="true">EM</span>
+      <span class="brand-text">
+        <span class="brand-name">Edgar Melendrez</span>
+        <span class="brand-role">Data Science · UoR</span>
+      </span>
+    </a> -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">Menu</label>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="data101.html" class="active">DATA 101</a></li>
+      <li><a href="final-project.html" class="active" aria-current="page">Final Project</a></li>
+      <li><a href="data-science-uor.html">Data Science at UoR</a></li>
+      <li><a href="other-activities.html">Other Activities</a></li>
+    </ul>
+  </nav>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollList = document.getElementById('day-nav-list');
+    const scrollButtons = document.querySelectorAll('.day-nav-arrow');
+
+    // If the elements don't exist on this page, exit early
+    if (!scrollList || scrollButtons.length === 0) return;
+
+    // How many pixels to jump per click. Adjust this if you want it to scroll more/less!
+    const scrollAmount = 150; 
+
+    // 1. Handle the button clicks
+    scrollButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Grab the 1 or -1 from your data attribute
+        const direction = parseInt(button.getAttribute('data-day-scroll'), 10);
+        
+        // Scroll the list
+        scrollList.scrollBy({
+          left: direction * scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // 2. Update the disabled state of the buttons
+    const updateButtonStates = () => {
+      const leftButton = document.querySelector('.day-nav-arrow[data-day-scroll="-1"]');
+      const rightButton = document.querySelector('.day-nav-arrow[data-day-scroll="1"]');
+
+      // If we are at the very beginning (left: 0), disable the left arrow
+      if (scrollList.scrollLeft <= 0) {
+        leftButton.disabled = true;
+      } else {
+        leftButton.disabled = false;
+      }
+
+      // If the amount we've scrolled + the visible width equals the total width, disable the right arrow
+      // (Subtracting 2 pixels as a buffer for decimal rounding issues on certain devices)
+      if (scrollList.scrollLeft + scrollList.clientWidth >= scrollList.scrollWidth - 2) {
+        rightButton.disabled = true;
+      } else {
+        rightButton.disabled = false;
+      }
+    };
+
+    // Listen for scroll events (both button clicks and finger swipes) to update buttons
+    scrollList.addEventListener('scroll', updateButtonStates);
+
+    // Run once on load and on window resize to ensure buttons start in the correct state
+    updateButtonStates();
+    window.addEventListener('resize', updateButtonStates);
+  });
+</script>
+</header>
+
+
+<main id="main">
+  <div class="page-header wrap">
+    <span class="eyebrow">Course page</span>
+    <h1>DATA 101</h1>
+    <div class="callout">
+        <h3>Not sure how to turn in your homework?</h3>
+        <p>Here are some notes on how to submit your homework via github:</p>
+        <p><a href="https://docs.google.com/presentation/d/1qRjY8HSiwMwzZ9USJX-vaX-QGIN3glFYSZGuSdaiLM4/edit?usp=sharing" target="_blank" rel="noopener">How to Submit Homework</a></p>
+      </div>
+  </div>
+  
+  <!-- ============================================================
+       GENERAL CLASS INFORMATION
+       ============================================================ -->
+  <section class="wrap" style="margin-top: 2.5rem;" aria-labelledby="general-info-heading">
+    <h2 id="general-info-heading">General class information</h2>
+ 
+    <ul class="catalog">
+      <li class="catalog-entry">
+        <span class="label">Room</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="value">Duke Hall, Rm 109</span>
+      </li>
+      <li class="catalog-entry">
+        <span class="label">Office hours</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="value"><a href="schedule.html">See full schedule</a></span>
+      </li>
+      <li class="catalog-entry">
+        <span class="label">Canvas</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="value"><a href="https://redlands.instructure.com/courses/17011" target="_blank" rel="noopener">Go to course page</a></span>
+      </li>
+      <li class="catalog-entry">
+        <span class="label">Syllabus</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="value"><a href="/course_materials/syllabus/IntroDataScience.pdf" target="_blank" rel="noopener">View syllabus</a></span>
+      </li>
+    </ul>
+ 
+
+  </section>
+ 
+  <!-- ============================================================
+       DAILY ASSIGNMENTS (main section)
+       ============================================================ -->
+  <section class="wrap" style="margin-top: 3rem;" aria-labelledby="daily-heading">
+    <h2 id="daily-heading">Daily assignments</h2>
+    <!-- <p>What we're covering and what's due, day by day. Days with a topic already set can be expanded for details — days marked <em>To be determined</em> are shaded out until they're filled in.</p> -->
+ 
+    <div class="daily-layout">
+      <nav class="day-nav" aria-label="Jump to a day">
+        <span class="day-nav-label">Jump to</span>
+        <div class="day-nav-scroller">
+          <button type="button" class="day-nav-arrow" data-day-scroll="-1" aria-label="Show earlier days" disabled>&#8249;</button>
+          <ul id="day-nav-list">
+            <li><a href="#day-1">Day 1</a></li>
+            <li><a href="#day-2">Day 2</a></li>
+            <li><a href="#day-3">Day 3</a></li>
+            <!-- <li><a href="#day-4" class="tbd-link">Day 4</a></li>
+            <li><a href="#day-5" class="tbd-link">Day 5</a></li>
+            <li><a href="#day-6" class="tbd-link">Day 6</a></li> -->
+          </ul>
+          <button type="button" class="day-nav-arrow" data-day-scroll="1" aria-label="Show later days">&#8250;</button>
+        </div>
+      </nav>
+ 
+      <div class="day-list">
+ 
+        <details class="course" id="day-1">
+          <summary>
+            <span class="code">Day 1</span>
+            <span class="title">Course introduction &amp; syllabus</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Mon, Sep 1</span>
+          </summary>
+          <div class="course-body">
+            <p>The overall goal of this class is to engage in curious exploration. Please be patient with yourself and others! Along the way you will learn how to make pretty graphs, some basics of programming in Python, and how to think like a Data Scientist.</p>
+
+            <p><strong>Pre-class:</strong> Each class day will have content that you should explore before class. I build my lectures, labs, and discussions assuming that you have done the work beforehand. Each day you will submit what you have completed. It does not have to be perfect, but it must show your attempt to engage in the material. <em>(Note: If you leave tabs open, remember to refresh the page!)</em></p>
+
+            <p><strong>Class time &amp; materials:</strong></p>
+            <ul>
+              <li><a href="https://joannabieri.com/introdatascience/Day1-WhatIsDataScience.html" target="_blank" rel="noopener">Notes — What is Data Science?</a></li>
+              <li><a href="course_materials/Day1/Day1-Presentation.pdf" target="_blank" rel="noopener">Slides — What is Data Science?</a></li>
+              <li><a href="https://joannabieri.com/introdatascience/Day1-ComputerSetup.html" target="_blank" rel="noopener">Notes — Set up your computer</a> (Important that this is done this week)</li>
+              <li><a href="course_materials/Day1/Day1-HW.ipynb" download>Homework — Day 1 (.ipynb)</a></li>
+              <!-- <li><a href="course_materials/Day1/Day1-WhatIsDataScience.html" target="_blank" rel="noopener">Notes — What is Data Science?</a></li>
+              <li><a href="course_materials/Day1/Day1-Presentation.pdf" target="_blank" rel="noopener">Slides — What is Data Science?</a></li>
+              <li><a href="course_materials/Day1/Day1-ComputerSetup.html" target="_blank" rel="noopener">Notes — Set up your computer</a> (Important that this is done this week)</li>
+              <li><a href="course_materials/Day1/Day1-HW.ipynb" download>Homework — Day 1 (.ipynb)</a></li> -->
+            </ul>
+
+            <p><em>Download each day's notebook from this page and move it into that Day's folder in your GitHub repo.</em></p>
+
+            <p><strong>Announcements:</strong> Start prepping for Day 2 — click on the Day 2 link and complete the pre-class materials.</p>
+          </div>
+        </details>
+ 
+        <details class="course" id="day-2">
+          <summary>
+            <span class="code">Day 2</span>
+            <span class="title">Hello World &amp; course workflow</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Wed, Sep 3</span>
+          </summary>
+          <div class="course-body">
+            <p><strong>Pre-class:</strong></p>
+            <ul>
+              <li><a href="https://youtu.be/kE3TEwvmgNg" target="_blank" rel="noopener">Video: How to be Successful</a> — Walks you through being a successful student in this class, the workflow, submitting homework, etc.</li>
+              <li><a href="https://joannabieri.com/introdatascience/Day2-HelloWorld.html" target="_blank" rel="noopener">Notes — Hello World!</a></li>
+              <li><a href="https://youtu.be/pc2BPv51Hw0" target="_blank" rel="noopener">Video: Hello World!</a></li>
+              <!-- <li><a href="course_materials/Day1/Day1-HW.ipynb" download>Homework — Day 1 (download .ipynb)</a></li> -->
+              
+            </ul>
+            <!-- <p>Take the quiz on Canvas!</p> -->
+            <p><em>(Note: If you leave tabs open, remember to occasionally refresh the page!)</em></p>
+            
+            <p><strong>Class time:</strong></p>
+            <ul>
+              <li>Go over syllabus and course expectations</li>
+              <li>Finish setting up conda</li>
+              <li><a href="course_materials/Day2/Day2-Presentation.pdf" target="_blank" rel="noopener">Slides — Hello World - Our first data science exploration!</a></li>
+              <li><a href="course_materials/Day2/Day2-HW.ipynb" download>Homework — Day 2 (download .ipynb)</a></li>
+            </ul>
+            <p><em>Download each day's notebook from this page and move it into that Day's folder in your GitHub repo.</em></p>
+            
+            <p><strong>Homework</strong></p>
+            <ul>
+              <li>Homework — Day 1 & 2 (Due Sunday 9/6 11:59pm)</li>
+            </ul>
+
+            <p><strong>Announcements:</strong></p>
+            <p>Submit Day 1 &amp; Day 2 homework by pushing to your GitHub repo by Sunday 9/6 11:59pm.<br>
+            Start prepping for Day 3 — click on the Day 3 link and complete the pre-class materials.</p>
+            <div class="callout">
+              <h3>No Class on Monday 09/07 - Labor Day</h3>
+              <p>Pretty self explanatory, have a good holiday!</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="course" id="day-3">
+          <summary>
+            <span class="code">Day 3</span>
+            <span class="title">Data Visualization</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Wed, Sep 9</span>
+          </summary>
+          <div class="course-body">
+            <!-- <div class="callout callout-construction">
+              <h3>Under Construction</h3>
+                <p>This section is currently being updated. Check back soon for updated materials and guidelines.</p>
+            </div> -->
+            <p><strong>Pre-class:</strong></p>
+            <ul>
+              <li><a href="course_materials/Day3/Day3-PythonDefinitions.html" target="_blank" rel="noopener">Python Vocabulary (will help with the quiz)</a></li>
+              <li>Pre-Class Quiz / Survey on canvas</li>
+              
+            </ul>
+            <p><em>(Note: If you leave tabs open, remember to occasionally refresh the page!)</em></p>
+            <!--  -->
+            <p><strong>Class time:</strong></p>
+            <ul>
+              <li><a href="https://docs.google.com/presentation/d/1XNgf3H-LFEbpgEChsZrzmGAArjt2lv3a4G7AkeiRO3U/edit?usp=sharing" target="_blank" rel="noopener">Data Visualization Presentation - Class Slides</a></li>
+              <li><a href="course_materials/Day3/Day3-HW.ipynb" download>Homework — Day 3 (download .ipynb)</a></li>
+              <li><a href="course_materials/Day3/Day3-DataVisualization.ipynb" download>Notes to Help with the Homework</a></li>
+              <li><a href="https://www.youtube.com/watch?v=eJKtoEgojcs" target="_blank" rel="noopener">Video to Help with the Homework</a></li>
+            </ul>
+
+            <p><strong>Homework</strong></p>
+            <ul>
+              <li>Homework — Day 3 (Due Sunday 9/13 11:59pm)</li>
+            </ul>
+
+            <!-- <p><strong>Announcements:</strong></p> -->
+            <!-- <p>Submit Day 1 &amp; Day 2 homework by pushing to your GitHub repo by Sunday 9/6 11:59pm.<br> -->
+            <!-- Start prepping for Day 3 — click on the Day 3 link and complete the pre-class materials.</p> -->
+          </div>
+        </details>
+
+        <details class="course" id="day-4" >
+          <summary>
+            <span class="code">Day 4</span>
+            <span class="title">Data Visualization</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Mon, Sep 14</span>
+          </summary>
+          <div class="course-body">
+            <!-- <div class="callout callout-construction">
+              <h3>Under Construction</h3>
+              <p>This section is currently being updated. Check back soon for updated materials and guidelines.</p>
+            </div> -->
+            <p><strong>Pre-class:</strong></p>
+            <ul>
+              <!-- <li><a href="https://www.youtube.com/watch?v=_pwQEzs8bMU" target="_blank" rel="noopener">Day 4 HW Help - Video</a></li> -->
+              <li><a href="course_materials/Day4/Day 4 - Numerical Vs Categorical.pdf" download>Numerical vs Categorical Data Introduction</a></li>
+              <li>Do the Day 4 Pre-Class Quiz on Canvas</li>
+              
+            </ul>
+            <p><em>(Note: If you leave tabs open, remember to occasionally refresh the page!)</em></p>
+            <!--  -->
+            <p><strong>Class time:</strong></p>
+            <ul>
+              <!-- <li><a href="https://docs.google.com/presentation/d/1XNgf3H-LFEbpgEChsZrzmGAArjt2lv3a4G7AkeiRO3U/edit?usp=sharing" target="_blank" rel="noopener">Data Visualization Presentation - Class Slides</a></li> -->
+              <li><a href="https://docs.google.com/presentation/d/16zr9eWbAghwe7LJBn7yhSGm2eApIvb8eqV-dO80-Cbg/edit?usp=sharing" target="_blank" rel="noopener">In Class Slides - Day 4</a></li>
+              <li><a href="https://www.youtube.com/watch?v=_pwQEzs8bMU" target="_blank" rel="noopener">Video - Day 4 HW Help </a></li>
+              <li><a href="https://joannabieri.com/introdatascience/Day4-NumericalCategoricalData.html" target="_blank" rel="noopener"> Notebook Notes - Day 4 HW Help</a></li>
+              <li><a href="course_materials/Day4/Day4-HW.ipynb" download>Homework — Day 4 (download .ipynb)</a></li>
+            </ul>
+
+            <p><strong>Homework</strong></p>
+            <ul>
+              <li>Homework — Day 4 & 5 (Due Sunday 9/20 11:59pm)</li>
+            </ul>
+
+            <!-- <p><strong>Announcements:</strong></p> -->
+            <!-- <p>Submit Day 1 &amp; Day 2 homework by pushing to your GitHub repo by Sunday 9/6 11:59pm.<br> -->
+            <!-- Start prepping for Day 3 — click on the Day 3 link and complete the pre-class materials.</p> -->
+          </div>
+        </details>
+
+
+        <details class="course" id="day-5" >
+          <summary>
+            <span class="code">Day 5</span>
+            <span class="title">Data Wrangling</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Wed, Sep 16</span>
+          </summary>
+          <div class="course-body">
+            <!-- <div class="callout callout-construction">
+              <h3>Under Construction</h3>
+              <p>This section is currently being updated. Check back soon for updated materials and guidelines.</p>
+            </div> -->
+            <p><strong>Pre-class:</strong></p>
+            <ul>
+              <li><a href="https://www.youtube.com/watch?v=JmZiOnb8hd0" target="_blank" rel="noopener">Video - Day 5 Data Wrangling</a></li>
+              <li><a href="https://joannabieri.com/introdatascience/Day5-DataWrangling.html" download>Notes - Day 5 Data Wrangling</a></li>
+              
+            </ul>
+            <p><em>(Note: If you leave tabs open, remember to occasionally refresh the page!)</em></p>
+            <!--  -->
+            <p><strong>Class time:</strong></p>
+            <ul>
+              <li><a href="https://docs.google.com/presentation/d/1OM6U4fsWqnqiNOPWhZ6MuVr57fFD1xorXEXWvrAy6yo/edit?usp=sharing" target="_blank" rel="noopener">In Class Slides - Day 5</a></li>
+              <!-- <li><a href="https://www.youtube.com/watch?v=_pwQEzs8bMU" target="_blank" rel="noopener">Video - Day 4 HW Help </a></li> -->
+              <!-- <li><a href="https://joannabieri.com/introdatascience/Day4-NumericalCategoricalData.html" target="_blank" rel="noopener"> Notebook Notes - Day 4 HW Help</a></li> -->
+              <li><a href="course_materials/Day5/Day5-HW.ipynb" download>Homework — Day 5 (download .ipynb)</a></li>
+            </ul>
+
+            <p><strong>Homework</strong></p>
+            <ul>
+              <li>Homework — Day 4 & 5 (Due Sunday 9/20 11:59pm)</li>
+            </ul>
+
+            <!-- <p><strong>Announcements:</strong></p> -->
+            <!-- <p>Submit Day 1 &amp; Day 2 homework by pushing to your GitHub repo by Sunday 9/6 11:59pm.<br> -->
+            <!-- Start prepping for Day 3 — click on the Day 3 link and complete the pre-class materials.</p> -->
+          </div>
+        </details>
+ 
+        <details class="course" id="day-6">
+          <summary>
+            <span class="code">Day 6</span>
+            <span class="title">Data Wrangling - Continued</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Mon, Sep 21</span>
+          </summary>
+          <div class="course-body">
+            
+            <p><strong>Pre-class:</strong></p>
+            <ul>
+              <li><a href="https://www.youtube.com/watch?v=0xgC9I7m_wQ" target="_blank" rel="noopener">Video - Day 6 Data Wrangling Continued</a></li>
+              <li><a href="https://joannabieri.com/introdatascience/Day6-DataWranglingContinued.html" download>Notes - Day 6 Data Wrangling Continued</a></li>
+              <li>Do the Day 6 Pre-class quiz on Canvas</a></li>
+              
+            </ul>
+            <p><em>(Note: If you leave tabs open, remember to occasionally refresh the page!)</em></p>
+            <!--  -->
+            <p><strong>Class time:</strong></p>
+            <ul>
+              <!-- <div class="callout callout-construction">
+              <h3>Under Construction</h3>
+              <p>This section is currently being updated. Check back soon for updated materials and guidelines.</p>
+              </div> -->
+              <li><a href="https://docs.google.com/presentation/d/1BKQ75MsLZz-OwT57k0xOTAzImR0iaN00tg_0j4zwIS0/edit?usp=sharing" target="_blank" rel="noopener">In Class Slides - Day 6</a></li>
+              <!-- <li><a href="https://www.youtube.com/watch?v=_pwQEzs8bMU" target="_blank" rel="noopener">Video - Day 4 HW Help </a></li> -->
+              <!-- <li><a href="https://joannabieri.com/introdatascience/Day4-NumericalCategoricalData.html" target="_blank" rel="noopener"> Notebook Notes - Day 4 HW Help</a></li> -->
+              <li><a href="course_materials/Day6/Day6-HW.ipynb" download>Homework — Day 6 (download .ipynb)</a></li>
+            </ul>
+
+            <p><strong>Homework</strong></p>
+            <ul>
+              <li>Homework — Day 6 & 7 (Due Sunday 9/27 11:59pm)</li>
+            </ul>
+
+            <!-- <p><strong>Announcements:</strong></p> -->
+            <!-- <p>Submit Day 1 &amp; Day 2 homework by pushing to your GitHub repo by Sunday 9/6 11:59pm.<br> -->
+            <!-- Start prepping for Day 3 — click on the Day 3 link and complete the pre-class materials.</p> -->
+          </div>
+        </details>
+        
+        <details class="course" id="day-7">
+          <summary>
+            <span class="code">Day 7</span>
+            <span class="title">Data Joining and Merging</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Wed, Sep 23</span>
+          </summary>
+          <div class="course-body">
+            
+            <p><strong>Pre-class:</strong></p>
+            <ul>
+              <li><a href="https://www.youtube.com/watch?v=T_XpN-mT-F0" target="_blank" rel="noopener">Video - Day 7 DataWranglingJoins</a></li>
+              <li><a href="https://joannabieri.com/introdatascience/Day7-DataWranglingJoins.html" download>Notes - Day 7 Multiple Dataframes</a></li>
+            </ul>
+            <p><em>(Note: If you leave tabs open, remember to occasionally refresh the page!)</em></p>
+            <!--  -->
+            <p><strong>Class time:</strong></p>
+            <ul>
+              <!-- <div class="callout callout-construction">
+              <h3>Under Construction</h3>
+              <p>This section is currently being updated. Check back soon for updated materials and guidelines.</p>
+              </div> -->
+              <li><a href="https://docs.google.com/presentation/d/1cxhRXuIryXTV-nLQ2f-Bz2eWYYHQ_50gk5FpkcDpRrY/edit?usp=sharing" target="_blank" rel="noopener">In Class Slides - Day 7</a></li>
+              <li><a href="course_materials/Day7/Day7-HW.ipynb" download>Homework — Day 7 (download .ipynb)</a></li>
+              <!-- <li><a href="https://www.youtube.com/watch?v=_pwQEzs8bMU" target="_blank" rel="noopener">Video - Day 4 HW Help </a></li> -->
+              <!-- <li><a href="https://joannabieri.com/introdatascience/Day4-NumericalCategoricalData.html" target="_blank" rel="noopener"> Notebook Notes - Day 4 HW Help</a></li> -->
+            </ul>
+            
+            <p><strong>Homework</strong></p>
+            <ul>
+              <li>Homework — Day 6 & 7 (Due Sunday 9/27 11:59pm)</li>
+            </ul>
+            
+            <!-- <p><strong>Announcements:</strong></p> -->
+            <!-- <p>Submit Day 1 &amp; Day 2 homework by pushing to your GitHub repo by Sunday 9/6 11:59pm.<br> -->
+            <!-- Start prepping for Day 3 — click on the Day 3 link and complete the pre-class materials.</p> -->
+          </div>
+        </details>
+
+        <details class="course" id="day-8">
+          <summary>
+            <span class="code">Day 8</span>
+            <span class="title">Data Joining and Merging</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Mon, Sep 28</span>
+          </summary>
+          <div class="course-body">
+            
+            <p><strong>Pre-class:</strong></p>
+            <ul>
+              <li><a href="https://www.youtube.com/watch?v=f4mfPzJELfM" target="_blank" rel="noopener">Video - Day 8 Reading Data and Data Types</a></li>
+              <li><a href="https://joannabieri.com/introdatascience/Day8-ReadingData-DataTypes.html" download>Notes - Day 8 Reading Data and Data Types</a></li>
+              <li>Pre-Class Quiz on Canvas - Review of pd.merge</li>
+              <li>Go to the <a href="https://www.fire.ca.gov/incidents" target="_blank">Cal Fire Incidents</a> page, scroll to the bottom, download ALL DATA AS CSV, and move 
+                mapdataall.csv into your Day8 folder. If the Cal Fire site gives you trouble, download <a href="https://joannabieri.com/introdatascience/data/mapdataall.csv" download>mapdataall.csv</a> here instead.</li>
+            </ul>
+            <p><em>(Note: If you leave tabs open, remember to occasionally refresh the page!)</em></p>
+            <!--  -->
+            <p><strong>Class time:</strong></p>
+            <ul>
+              <!-- <div class="callout callout-construction">
+              <h3>Under Construction</h3>
+              <p>This section is currently being updated. Check back soon for updated materials and guidelines.</p>
+              </div> -->
+              <li><a href="https://docs.google.com/presentation/d/1-1wSuh6uI8n4E9XxTCGUNQNIPVGwCcElaMtk04QQXDU/edit?usp=sharing" target="_blank" rel="noopener">In Class Slides - Day 8</a></li>
+              <li><a href="course_materials/Day8/Day8-HW.ipynb" download>Homework — Day 8 (download .ipynb)</a></li>
+              <li>Talk about the <a href="https://joannabieri.com/introdatascience/CheatSheet.html" target="_blank" rel="noopener">Command Cheat Sheet</a></li>
+            </ul>
+
+            <p><strong>Homework</strong></p>
+            <ul>
+              <li>Homework — Day 8 (Due Sunday 9/4 11:59pm)</li>
+              <li>Homework — Day 9 (Due Sunday 10/11 11:59pm)</li>
+            </ul>
+
+            <!-- <p><strong>Announcements:</strong></p> -->
+            <!-- <p>Submit Day 1 &amp; Day 2 homework by pushing to your GitHub repo by Sunday 9/6 11:59pm.<br> -->
+            <!-- Start prepping for Day 3 — click on the Day 3 link and complete the pre-class materials.</p> -->
+          </div>
+        </details>
+
+        <details class="course" id="day-review-1" >
+          <summary>
+            <span class="code">Review Day</span>
+            <span class="title">Review</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Wed, Sep 30</span>
+          </summary>
+          <div class="course-body">
+            <div class="callout">
+              <p><strong>Postponed to After the Exam</strong></p>
+              <ul>
+                <li><a href="https://www.youtube.com/watch?v=SH3Sv9a3CHc" target="_blank" rel="noopener">Video - Day 9 Importing Re-coding Visualizing Data </a></li>
+                <li><a href="https://joannabieri.com/introdatascience/Day9-ImportingRecodingVisualizingData.html" download>Notes - Day 9 Importing Re-coding Visualizing Data</a></li>
+                <li><a href="course_materials/Day9/Day9-HW.ipynb" download>Homework — Day 9 (download .ipynb)</a></li>
+                <li>In Class Slides - Day 9</li>
+                <li>Homework — Day 9 (Due Sunday 10/11 11:59pm)</li>
+              </ul>
+            </div>
+            <p><em>(Note: If you leave tabs open, remember to occasionally refresh the page!)</em></p>
+            <!--  -->
+            <p><strong>Pre-class:</strong></p>
+            <ul>
+              <li>Do the practice exam from day 7. Come prepared with questions about the practice exam.</li>
+              <li>Come prepared with questions from any of the homeworks</li>
+            </ul>
+            <p><strong>Class time:</strong></p>
+            <ul>
+              <li>Review Practice Exam From Day 7 Together</li> 
+              <li>Go over any questions from any of the homeworks</li> 
+              <li>Go over how the exam works</li>
+            </ul>
+
+            <p><strong>Homework</strong></p>
+            <ul>
+              <li>Homework — Day 8 (Due Sunday 10/4 11:59pm)</li>
+              <li>Exam 1 Part 1 (Due Monday 10/5 10:49am aka right before class)</li>
+            </ul>
+
+            <!-- <p><strong>Announcements:</strong></p> -->
+            <!-- <p>Submit Day 1 &amp; Day 2 homework by pushing to your GitHub repo by Sunday 9/6 11:59pm.<br> -->
+            <!-- Start prepping for Day 3 — click on the Day 3 link and complete the pre-class materials.</p> -->
+          </div>
+        </details>
+
+        <details class="course" id="day-exam-1">
+          <summary>
+            <span class="code">Exam 1 Day</span>
+            <span class="title">Exam - In Class</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Mon, Oct 5</span>
+          </summary>
+          <div class="course-body">
+            
+            <p><strong>Pre-class:</strong></p>
+            <ul>
+              <li>Exam 1 opens on Canvas Wednesday 9/30.
+              <ul>
+                <li>This exam is open notes, open computer, etc - but you cannot use any type of human or AI intervention. This includes asking how to do an entire problem online, asking ChatGPT or any other AI, or working with friends.</li>
+                <li>The pre-class work on the exam must be COMPLETELY ON YOUR OWN!</li>
+                <li>Upload the the Exam1.ipynb in the main folder of your repo (not inside a Day folder). Commit and Push your first draft before class starts on Monday 10/5.</li>
+              </ul>
+            </ul>
+            <p><em>(Note: If you leave tabs open, remember to occasionally refresh the page!)</em></p>
+            <!--  -->
+            <p><strong>Class time:</strong></p>
+            <ul>
+              <li>Work on Exam 1 in Groups</li>
+            </ul>
+
+            <p><strong>Homework</strong></p>
+            <ul>
+              <li>You have until end of day (Monday 10/5 @11:59pm) to finish your exam. Same rules as before class (NO AI and NO HUMAN help)</li>
+              <li>Homework — Day 9 (Due Sunday 10/11 11:59pm)</li>
+            </ul>
+
+            <!-- <p><strong>Announcements:</strong></p> -->
+            <!-- <p>Submit Day 1 &amp; Day 2 homework by pushing to your GitHub repo by Sunday 9/6 11:59pm.<br> -->
+            <!-- Start prepping for Day 3 — click on the Day 3 link and complete the pre-class materials.</p> -->
+          </div>
+        </details>
+ 
+        <details class="course" id="day-9">
+          <summary>
+            <span class="code">Day 9</span>
+            <span class="title">Importing, Recoding, and Visualizing Data</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Wed, Oct 07</span>
+          </summary>
+          <div class="course-body">
+            <!-- <div class="callout callout-construction">
+            <h3>Under Construction</h3>
+            <p>This section is currently being updated. Check back soon for updated materials and guidelines.</p>
+            </div> -->
+            
+            <p><strong>Pre-class:</strong></p>
+            <ul>
+              <li>Nothing this time, chill out and relax a little after the exam. You all earned it</li>
+            </ul>
+            <p><em>(Note: If you leave tabs open, remember to occasionally refresh the page!)</em></p>
+            <!--  -->
+            <p><strong>Class time:</strong></p>
+            <ul>
+              <li>Do the Survey On Canvas, let me know how the exam went. (In class participation)</li>
+              <li><a href="course_materials/Day9/Day9-HW.ipynb" download>Homework — Day 9 (download .ipynb)</a></li>
+              <li>Homework Exercise 2 Data: <a href="https://joannabieri.com/introdatascience/data/sales.xlsx" download>file_name = 'https://joannabieri.com/introdatascience/data/sales.xlsx'</a></li>
+              <li><a href="https://docs.google.com/presentation/d/1cpIGfNs6bvZipPT8B_Cdj7Uw8ni_KO9ztsacRbIMhM0/edit?usp=sharing" target="_blank" rel="noopener">In Class Slides - Day 9</a></li>
+
+              <!-- <li>In Class Slides - Day 9</li> -->
+            </ul>
+
+            <p><strong>Homework</strong></p>
+            <ul>
+              <li>Homework — Day 9 (Due Sunday 10/11 11:59pm)</li>
+            </ul>
+
+            <!-- <p><strong>Announcements:</strong></p> -->
+            <!-- <p>Submit Day 1 &amp; Day 2 homework by pushing to your GitHub repo by Sunday 9/6 11:59pm.<br> -->
+            <!-- Start prepping for Day 3 — click on the Day 3 link and complete the pre-class materials.</p> -->
+          </div>
+        </details>
+
+        <details class="course" id="day-10" open>
+          <summary>
+            <span class="code">Fall Break</span>
+            <span class="title">No Class - Fall Break</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Mon, October 12</span>
+          </summary>
+          <div class="course-body">
+            
+            <p><strong>Class time:</strong></p>
+            <ul>
+              <li>No Class - Fall Break</li>
+            </ul>
+          </div>
+        </details>
+ 
+        <details class="course" id="day-10" open>
+          <summary>
+            <span class="code">Day 10</span>
+            <span class="title">Effective Visualization and Data Storytelling</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="term">Wed, Oct  14</span>
+          </summary>
+          <div class="course-body">
+            <div class="callout callout-construction">
+            <h3>Under Construction</h3>
+            <p>This section is currently being updated. Check back soon for updated materials and guidelines.</p>
+            </div>
+            
+            <p><strong>Pre-class:</strong></p>
+            <ul>
+              <li>Pre-Class Quiz on Canvas - Review Pivots and Melts</li>
+              <!-- <li><a href="https://www.youtube.com/watch?v=f4mfPzJELfM" target="_blank" rel="noopener">Video - Day 8 Reading Data and Data Types</a></li>
+              <li><a href="https://joannabieri.com/introdatascience/Day8-ReadingData-DataTypes.html" download>Notes - Day 8 Reading Data and Data Types</a></li>
+              <li>Go to the <a href="https://www.fire.ca.gov/incidents" target="_blank">Cal Fire Incidents</a> page, scroll to the bottom, download ALL DATA AS CSV, and move 
+                mapdataall.csv into your Day8 folder. If the Cal Fire site gives you trouble, download <a href="https://joannabieri.com/introdatascience/data/mapdataall.csv" download>mapdataall.csv</a> here instead.</li> -->
+            </ul>
+            <p><em>(Note: If you leave tabs open, remember to occasionally refresh the page!)</em></p>
+            <!--  -->
+            <p><strong>Class time:</strong></p>
+            <ul>
+              <!-- <li><a href="https://docs.google.com/presentation/d/1-1wSuh6uI8n4E9XxTCGUNQNIPVGwCcElaMtk04QQXDU/edit?usp=sharing" target="_blank" rel="noopener">In Class Slides - Day 8</a></li> -->
+              <li><a href="course_materials/Day10/Day10-HW.ipynb" download>Homework — Day 10 (download .ipynb)</a></li>
+              <!-- <li>Talk about the <a href="https://joannabieri.com/introdatascience/CheatSheet.html" target="_blank" rel="noopener">Command Cheat Sheet</a></li> --> -->
+            </ul>
+
+            <p><strong>Homework</strong></p>
+            <ul>
+              <li>Homework — Day 10 (Due Sunday 10/19 11:59pm)</li>
+              <li>Final Project </li>
+            </ul>
+
+            <!-- <p><strong>Announcements:</strong></p> -->
+            <!-- <p>Submit Day 1 &amp; Day 2 homework by pushing to your GitHub repo by Sunday 9/6 11:59pm.<br> -->
+            <!-- Start prepping for Day 3 — click on the Day 3 link and complete the pre-class materials.</p> -->
+          </div>
+        </details>
+      </div>
+      
+      <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--grey-500);">
+        This list grows as the term goes on — check back before each class for updates.
+      </p>
+    </section>
+    
+    <!-- ============================================================
+    HOMEWORK SOLUTIONS / EXAM REVIEW
+    ============================================================ -->
+    <section class="wrap" style="margin-top: 3rem;" aria-labelledby="review-heading">
+      <h2 id="review-heading">Homework solutions / exam review</h2>
+      <p>Posted after each assignment or exam is returned.</p>
+      
+      <ul class="catalog">
+        <li><a href="course_materials/Day1/Day1-HW_Sol.ipynb"       download>Solutions HW Day 1 (download .ipynb)</a></li>
+        <li><a href="course_materials/Day2/Day2-HW-Sol.ipynb"       download>Solutions HW Day 2 (download .ipynb)</a></li>
+        <li><a href="course_materials/Day3/Day3-HW_Solutions.ipynb" download>Solutions HW Day 3 (download .ipynb)</a></li>
+        <li><a href="course_materials/Day4/Day4-HW_sol.ipynb" download>Solutions HW Day 4 (download .ipynb)</a></li>
+        <li><a href="course_materials/Day5/Day5_sols.ipynb" download>Solutions HW Day 4 (download .ipynb)</a></li>
+        <li><a href="course_materials/Day8/PracticeExam_solns.ipynb" download>Practice Exam Solutions</a></li>
+        
+    </ul>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>&copy; 2026 Edgar Melendrez · University of Redlands</span>
+    <ul class="footer-links">
+      <li><a href="mailto:edgar_melendrez@redlands.edu">Email</a></li>
+      <!-- <li><a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a></li> -->
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
